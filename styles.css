@@ -906,6 +906,27 @@ body {
 .about-text p {
     color: var(--secondary-text);
     line-height: 1.8;
+    font-weight: 400;
+}
+
+/* About section background for better readability */
+.about {
+    background: var(--bg-color);
+}
+
+[data-theme="dark"] .about {
+    background: #1f2937;
+}
+
+/* Ensure about section text is readable in dark mode */
+[data-theme="dark"] .about-text p {
+    color: #d1d5db;
+    font-weight: 400;
+}
+
+[data-theme="dark"] .about .section-title {
+    color: #ffffff;
+    font-weight: 700;
 }
 
 .project-content p {
@@ -959,6 +980,42 @@ p, span, li {
     color: var(--secondary-text);
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+/* Skills section background for better contrast */
+.skills {
+    background: var(--bg-color);
+}
+
+[data-theme="dark"] .skills {
+    background: #1f2937;
+}
+
+/* Enhanced skill items readability in dark mode */
+[data-theme="dark"] .skill-item {
+    background: #374151;
+    color: #f3f4f6;
+    border: 1px solid #4b5563;
+    font-weight: 500;
+}
+
+[data-theme="dark"] .skill-item:hover {
+    background: #4b5563;
+    color: #ffffff;
+    border-color: #60a5fa;
+}
+
+/* Skill category titles in dark mode */
+[data-theme="dark"] .skill-category h3 {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Skills section title in dark mode */
+[data-theme="dark"] .skills .section-title {
+    color: #ffffff;
+    font-weight: 700;
 }
 
 .project-card {
@@ -1042,10 +1099,40 @@ p, span, li {
 
 .stat h3 {
     color: var(--text-color);
+    font-weight: 600;
 }
 
 .stat p {
     color: var(--muted-text);
+    font-weight: 500;
+}
+
+/* Enhanced stats readability in dark mode */
+[data-theme="dark"] .stat h3 {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .stat p {
+    color: #e5e7eb !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Stats container background for better contrast */
+[data-theme="dark"] .about-stats {
+    background: rgba(55, 65, 81, 0.5);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #4b5563;
+}
+
+[data-theme="dark"] .stat {
+    background: rgba(75, 85, 99, 0.3);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #6b7280;
 }
 
 /* Theme-specific overrides only where needed */
