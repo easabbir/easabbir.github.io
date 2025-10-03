@@ -1272,6 +1272,155 @@ p, span, li {
     background: var(--bg-color);
 }
 
+/* Resume Section */
+.resume-section {
+    padding: 100px 0;
+    background: #f9fafb;
+}
+
+[data-theme="dark"] .resume-section {
+    background: #1f2937;
+}
+
+.resume-content {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.resume-preview {
+    flex: 1;
+}
+
+.pdf-preview {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+
+[data-theme="dark"] .pdf-preview {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.pdf-preview:hover {
+    transform: translateY(-5px);
+}
+
+.pdf-preview i {
+    font-size: 4rem;
+    color: #dc2626;
+    margin-bottom: 1.5rem;
+}
+
+.pdf-preview h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.pdf-preview p {
+    color: var(--secondary-text);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.resume-actions {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.resume-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.resume-actions .btn-primary {
+    background: var(--accent-color);
+    color: white;
+}
+
+.resume-actions .btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+}
+
+.resume-actions .btn-secondary {
+    background: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+}
+
+.resume-actions .btn-secondary:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Resume section title - ensure visibility in both modes */
+.resume-section .section-title {
+    color: var(--text-color);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+[data-theme="dark"] .resume-section .section-title {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Resume navigation button styling */
+.resume-btn {
+    background: var(--accent-color) !important;
+    color: white !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+.resume-btn:hover {
+    background: #1d4ed8 !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .resume-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .pdf-preview {
+        padding: 2rem 1.5rem;
+    }
+    
+    .resume-actions {
+        width: 100%;
+    }
+}
+
 .blog-content {
     text-align: center;
     max-width: 600px;
