@@ -382,3 +382,217 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Loading Spinner
+document.addEventListener('DOMContentLoaded', () => {
+    const loadingSpinner = document.getElementById('loading-spinner');
+    
+    // Hide spinner after page loads
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            loadingSpinner.classList.add('hidden');
+            setTimeout(() => {
+                loadingSpinner.style.display = 'none';
+            }, 500);
+        }, 1000); // Show spinner for at least 1 second
+    });
+});
+
+// Dark/Light Mode Toggle
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+    
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
+    
+    function updateThemeIcon(theme) {
+        if (theme === 'dark') {
+            themeIcon.className = 'fas fa-sun';
+        } else {
+            themeIcon.className = 'fas fa-moon';
+        }
+    }
+});
+
+// Initialize AOS (Animate On Scroll)
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+    }
+});
+
+// Enhanced Smooth Scrolling with offset for fixed navbar
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Enhanced navbar scroll effect with theme support
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    
+    if (window.scrollY > 100) {
+        if (currentTheme === 'dark') {
+            navbar.style.background = 'rgba(26, 26, 26, 0.98)';
+        } else {
+            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+        }
+        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+    } else {
+        if (currentTheme === 'dark') {
+            navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+        } else {
+            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        }
+        navbar.style.boxShadow = 'none';
+    }
+});
+
+// Back to Top Button
+document.addEventListener('DOMContentLoaded', () => {
+    // Create back to top button
+    const backToTopButton = document.createElement('button');
+    backToTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    backToTopButton.className = 'back-to-top';
+    backToTopButton.setAttribute('aria-label', 'Back to top');
+    
+    // Add styles
+    backToTopButton.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        transition: all 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1000;
+        transform: translateY(20px);
+    `;
+    
+    document.body.appendChild(backToTopButton);
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopButton.style.opacity = '1';
+            backToTopButton.style.visibility = 'visible';
+            backToTopButton.style.transform = 'translateY(0)';
+        } else {
+            backToTopButton.style.opacity = '0';
+            backToTopButton.style.visibility = 'hidden';
+            backToTopButton.style.transform = 'translateY(20px)';
+        }
+    });
+    
+    // Scroll to top functionality
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Hover effects
+    backToTopButton.addEventListener('mouseenter', () => {
+        backToTopButton.style.transform = 'translateY(0) scale(1.1)';
+        backToTopButton.style.boxShadow = '0 6px 20px rgba(37, 99, 235, 0.4)';
+    });
+    
+    backToTopButton.addEventListener('mouseleave', () => {
+        backToTopButton.style.transform = 'translateY(0) scale(1)';
+        backToTopButton.style.boxShadow = '0 4px 15px rgba(37, 99, 235, 0.3)';
+    });
+});
+
+// Enhanced project card animations
+document.addEventListener('DOMContentLoaded', () => {
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach((card, index) => {
+        // Stagger animation delay
+        card.style.animationDelay = `${index * 0.1}s`;
+        
+        // Enhanced hover effect
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+            this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+        });
+    });
+});
+
+// Keyboard navigation support
+document.addEventListener('keydown', (e) => {
+    // ESC key to close mobile menu
+    if (e.key === 'Escape') {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
+    
+    // Ctrl/Cmd + D for dark mode toggle
+    if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
+        e.preventDefault();
+        document.getElementById('theme-toggle').click();
+    }
+});
+
+// Performance optimization: Throttle scroll events
+function throttle(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Apply throttling to scroll events
+const throttledScroll = throttle(() => {
+    // Existing scroll handlers here
+}, 16); // ~60fps
+
+window.addEventListener('scroll', throttledScroll);

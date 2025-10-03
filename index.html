@@ -7,8 +7,22 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="loading-spinner">
+        <div class="spinner"></div>
+        <p>Loading Portfolio...</p>
+    </div>
+    
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -32,6 +46,12 @@
                     <a href="#contact" class="nav-link">Contact</a>
                 </li>
                 <li class="nav-item">
+                    <a href="#certifications" class="nav-link">Certifications</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#blog" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
                     <a href="#resume" class="nav-link resume-btn">Resume</a>
                 </li>
             </ul>
@@ -44,7 +64,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero" data-aos="fade-up">
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">
@@ -70,7 +90,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="about" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
@@ -105,7 +125,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills">
+    <section id="skills" class="skills" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
             <div class="skills-grid">
@@ -155,7 +175,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <section id="projects" class="projects" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
@@ -270,8 +290,38 @@
         </div>
     </section>
 
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certifications-content">
+                <p class="coming-soon">Professional certifications and achievements will be displayed here soon.</p>
+                <div class="cert-placeholder">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Coming Soon</h3>
+                    <p>ISTQB, Agile Testing, and other professional certifications</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog/Articles Section -->
+    <section id="blog" class="blog" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Blog & Articles</h2>
+            <div class="blog-content">
+                <p class="coming-soon">Technical articles and blog posts about software testing will be featured here.</p>
+                <div class="blog-placeholder">
+                    <i class="fas fa-blog"></i>
+                    <h3>Coming Soon</h3>
+                    <p>Insights on test automation, quality assurance best practices, and industry trends</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Resume Section -->
-    <section id="resume" class="resume-section">
+    <section id="resume" class="resume-section" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title">Resume</h2>
             <div class="resume-content">
@@ -295,7 +345,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-content">
@@ -348,14 +398,15 @@
             <div class="footer-content">
                 <p>&copy; 2024 Ehsanul Alam Sabbir. All rights reserved.</p>
                 <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/ehsanul-alam-sabbir/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/easabbir" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
