@@ -198,6 +198,60 @@ body {
     color: #1f2937;
 }
 
+/* Hero Social Links */
+.hero-social {
+    display: flex !important;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: flex-start;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.hero-social-link {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.1);
+    color: #333 !important;
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hero-social-link:hover {
+    background: rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 0, 0, 0.3);
+}
+
+.hero-social-link:nth-child(1):hover {
+    background: #0077b5;
+    border-color: #0077b5;
+    color: white !important;
+}
+
+.hero-social-link:nth-child(2):hover {
+    background: #333;
+    border-color: #333;
+    color: white !important;
+}
+
+.hero-social-link:nth-child(3):hover {
+    background: #1877f2;
+    border-color: #1877f2;
+    color: white !important;
+}
+
 .profile-card {
     display: flex;
     justify-content: center;
@@ -694,6 +748,11 @@ section {
         justify-content: center;
     }
 
+    .hero-social {
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+
     .btn {
         padding: 0.75rem 1.5rem;
         font-size: 0.9rem;
@@ -1175,6 +1234,17 @@ p, span, li {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+}
+
+/* Ensure hero social links are visible in dark mode */
+[data-theme="dark"] .hero-social-link {
+    background: rgba(255, 255, 255, 0.1);
+    color: white !important;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .hero-social-link:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .skill-category,
