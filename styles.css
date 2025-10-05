@@ -405,6 +405,13 @@ section {
     transform: scale(1.05);
 }
 
+/* Specific styling for Xsolla logo to show full company name */
+.project-card:last-child .project-img {
+    object-fit: contain;
+    background: white;
+    padding: 20px;
+}
+
 .project-content {
     padding: 2rem;
 }
