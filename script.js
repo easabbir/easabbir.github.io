@@ -596,3 +596,301 @@ const throttledScroll = throttle(() => {
 }, 16); // ~60fps
 
 window.addEventListener('scroll', throttledScroll);
+
+// Enhanced Timeline Animations
+document.addEventListener('DOMContentLoaded', () => {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                
+                // Add stagger effect for timeline dots
+                const dot = entry.target.querySelector('.timeline-dot');
+                if (dot) {
+                    setTimeout(() => {
+                        dot.style.transform = 'translateX(-50%) scale(1.2)';
+                        setTimeout(() => {
+                            dot.style.transform = 'translateX(-50%) scale(1)';
+                        }, 200);
+                    }, 300);
+                }
+            }
+        });
+    }, {
+        threshold: 0.3,
+        rootMargin: '0px 0px -100px 0px'
+    });
+    
+    timelineItems.forEach((item, index) => {
+        // Add initial animation classes
+        item.style.opacity = '0';
+        item.style.transform = index % 2 === 0 ? 'translateX(-50px)' : 'translateX(50px)';
+        item.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        item.style.transitionDelay = `${index * 0.2}s`;
+        
+        timelineObserver.observe(item);
+    });
+});
+
+// Add CSS for timeline animations
+const timelineStyle = document.createElement('style');
+timelineStyle.textContent = `
+    .timeline-item.animate {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+    }
+    
+    .timeline-dot {
+        transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+`;
+document.head.appendChild(timelineStyle);
+
+// Enhanced Section Title Animations
+document.addEventListener('DOMContentLoaded', () => {
+    const sectionTitles = document.querySelectorAll('.section-title');
+    
+    const titleObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                
+                // Typewriter effect for section titles
+                const text = entry.target.textContent;
+                entry.target.textContent = '';
+                
+                let i = 0;
+                const typeInterval = setInterval(() => {
+                    entry.target.textContent += text.charAt(i);
+                    i++;
+                    if (i >= text.length) {
+                        clearInterval(typeInterval);
+                    }
+                }, 50);
+            }
+        });
+    }, {
+        threshold: 0.8
+    });
+    
+    sectionTitles.forEach(title => {
+        titleObserver.observe(title);
+    });
+});
+
+// Particle Animation for Hero Background
+function createParticles() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    
+    const particlesContainer = document.createElement('div');
+    particlesContainer.className = 'particles-container';
+    particlesContainer.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+    `;
+    
+    hero.appendChild(particlesContainer);
+    
+    // Create particles
+    for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.cssText = `
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float-particle ${Math.random() * 10 + 10}s linear infinite;
+            left: ${Math.random() * 100}%;
+            animation-delay: ${Math.random() * 10}s;
+        `;
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// Add particle animation keyframes
+const particleStyle = document.createElement('style');
+particleStyle.textContent = `
+    @keyframes float-particle {
+        0% {
+            transform: translateY(100vh) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100px) rotate(360deg);
+            opacity: 0;
+        }
+    }
+    
+    .particles-container {
+        background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 80%, rgba(251, 191, 36, 0.1) 0%, transparent 50%);
+    }
+`;
+document.head.appendChild(particleStyle);
+
+// Initialize particles
+document.addEventListener('DOMContentLoaded', createParticles);
+
+// Enhanced Skill Items Animation
+document.addEventListener('DOMContentLoaded', () => {
+    const skillCategories = document.querySelectorAll('.skill-category');
+    
+    skillCategories.forEach((category, categoryIndex) => {
+        const skillItems = category.querySelectorAll('.skill-item');
+        
+        const categoryObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    skillItems.forEach((item, itemIndex) => {
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0) scale(1)';
+                        }, itemIndex * 100);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        // Set initial state
+        skillItems.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px) scale(0.8)';
+            item.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        });
+        
+        categoryObserver.observe(category);
+    });
+});
+
+// Mouse Trail Effect
+let mouseTrail = [];
+const maxTrailLength = 20;
+
+document.addEventListener('mousemove', (e) => {
+    mouseTrail.push({ x: e.clientX, y: e.clientY, time: Date.now() });
+    
+    if (mouseTrail.length > maxTrailLength) {
+        mouseTrail.shift();
+    }
+    
+    updateMouseTrail();
+});
+
+function updateMouseTrail() {
+    const existingTrails = document.querySelectorAll('.mouse-trail');
+    existingTrails.forEach(trail => trail.remove());
+    
+    mouseTrail.forEach((point, index) => {
+        const trail = document.createElement('div');
+        trail.className = 'mouse-trail';
+        trail.style.cssText = `
+            position: fixed;
+            width: ${6 - (index * 0.2)}px;
+            height: ${6 - (index * 0.2)}px;
+            background: radial-gradient(circle, rgba(37, 99, 235, ${0.8 - (index * 0.04)}) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            left: ${point.x}px;
+            top: ${point.y}px;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.1s ease;
+        `;
+        document.body.appendChild(trail);
+        
+        // Fade out old trails
+        setTimeout(() => {
+            if (trail.parentNode) {
+                trail.style.opacity = '0';
+                setTimeout(() => trail.remove(), 100);
+            }
+        }, 100);
+    });
+}
+
+// Magnetic Effect for Buttons
+document.addEventListener('DOMContentLoaded', () => {
+    const magneticElements = document.querySelectorAll('.btn, .hero-social-link, .project-link');
+    
+    magneticElements.forEach(element => {
+        element.addEventListener('mousemove', (e) => {
+            const rect = element.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            element.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            element.style.transform = 'translate(0, 0)';
+        });
+    });
+});
+
+// Text Reveal Animation
+function revealText(element) {
+    const text = element.textContent;
+    element.innerHTML = '';
+    
+    text.split('').forEach((char, index) => {
+        const span = document.createElement('span');
+        span.textContent = char === ' ' ? '\u00A0' : char;
+        span.style.cssText = `
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: revealChar 0.5s ease forwards;
+            animation-delay: ${index * 0.02}s;
+        `;
+        element.appendChild(span);
+    });
+}
+
+// Add reveal animation keyframes
+const revealStyle = document.createElement('style');
+revealStyle.textContent = `
+    @keyframes revealChar {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(revealStyle);
+
+// Apply text reveal to timeline content
+document.addEventListener('DOMContentLoaded', () => {
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const title = entry.target.querySelector('h3');
+                const company = entry.target.querySelector('h4');
+                
+                if (title) setTimeout(() => revealText(title), 300);
+                if (company) setTimeout(() => revealText(company), 500);
+            }
+        });
+    }, { threshold: 0.6 });
+    
+    document.querySelectorAll('.timeline-content').forEach(content => {
+        timelineObserver.observe(content);
+    });
+});
