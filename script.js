@@ -289,14 +289,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Parallax effect for hero section
+// Enhanced Parallax Effects
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
+    const parallaxElements = document.querySelectorAll('.parallax-element');
+    
+    // Hero parallax
     if (hero) {
-        const rate = scrolled * -0.5;
+        const rate = scrolled * -0.3;
         hero.style.transform = `translateY(${rate}px)`;
+        
+        // Hero background parallax
+        const heroBackground = hero.querySelector('::before');
+        if (heroBackground) {
+            heroBackground.style.transform = `translateY(${scrolled * 0.1}px)`;
+        }
     }
+    
+    // Multiple layer parallax
+    parallaxElements.forEach((element, index) => {
+        const speed = 0.1 + (index * 0.05);
+        const yPos = -(scrolled * speed);
+        element.style.transform = `translateY(${yPos}px)`;
+    });
+    
+    // Floating social links parallax
+    const socialLinks = document.querySelectorAll('.hero-social-link');
+    socialLinks.forEach((link, index) => {
+        const speed = 0.05 + (index * 0.02);
+        const yPos = -(scrolled * speed);
+        link.style.transform = `translateY(${yPos}px)`;
+    });
 });
 
 // Dark mode toggle (optional feature)
@@ -324,21 +348,83 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Smooth reveal animation for sections
+// Enhanced Smooth Scroll-Triggered Animations
 function revealSection() {
     const sections = document.querySelectorAll('section');
+    const cards = document.querySelectorAll('.project-card, .skill-category, .timeline-item');
+    const animatedElements = document.querySelectorAll('.stat, .achievement, .skill-item');
     
-    sections.forEach(section => {
+    // Section reveals
+    sections.forEach((section, index) => {
         const sectionTop = section.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
         
-        if (sectionTop < windowHeight * 0.8) {
+        if (sectionTop < windowHeight * 0.85) {
             section.classList.add('revealed');
+            
+            // Add staggered animation delay
+            setTimeout(() => {
+                section.style.transform = 'translateY(0)';
+                section.style.opacity = '1';
+            }, index * 100);
+        }
+    });
+    
+    // Card animations with stagger
+    cards.forEach((card, index) => {
+        const cardTop = card.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (cardTop < windowHeight * 0.8) {
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0) scale(1)';
+            }, index * 150);
+        }
+    });
+    
+    // Small element animations
+    animatedElements.forEach((element, index) => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight * 0.9) {
+            setTimeout(() => {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }, index * 50);
         }
     });
 }
 
-window.addEventListener('scroll', revealSection);
+// Smooth scroll with momentum
+function smoothScrollTo(target, duration = 1000) {
+    const targetPosition = target.offsetTop - 80;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+    
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = easeInOutCubic(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+    
+    function easeInOutCubic(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t * t + b;
+        t -= 2;
+        return c / 2 * (t * t * t + 2) + b;
+    }
+    
+    requestAnimationFrame(animation);
+}
+
+// Enhanced scroll event with throttling
+const throttledReveal = throttle(revealSection, 16);
+window.addEventListener('scroll', throttledReveal);
 document.addEventListener('DOMContentLoaded', revealSection);
 
 // Add CSS for revealed sections
