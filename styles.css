@@ -357,6 +357,16 @@ section {
     background: #f9fafb;
 }
 
+[data-theme="dark"] .projects {
+    background: #1f2937;
+}
+
+[data-theme="dark"] .projects .section-title {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
