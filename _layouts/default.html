@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include head.html %}
+</head>
+<body class="layout-{{ page.layout }}{% if page.body_class %} {{ page.body_class }}{% endif %}">
+{% include nav.html %}
+<main id="main" tabindex="-1">
+{{ content }}
+</main>
+{% include footer.html %}
+{%- assign asset_version = site.time | date: '%s' %}
+<script src="{{ '/assets/js/site.js' | relative_url }}?v={{ asset_version }}" defer></script>
+{%- for script in page.scripts %}
+<script src="{{ script | relative_url }}?v={{ asset_version }}" defer></script>
+{%- endfor %}
+</body>
+</html>

@@ -1,0 +1,21 @@
+---
+layout: default
+title: Page not found
+permalink: /404.html
+sitemap: false
+body_class: error-page
+---
+<section class="section not-found" aria-labelledby="not-found-title">
+    <div class="container">
+        <p class="eyebrow"><span class="eyebrow-num">404</span>Not found</p>
+        <h1 id="not-found-title">This page didn&rsquo;t pass.</h1>
+        <pre class="test-failure"><span class="fail">FAILED</span> GET <span id="missing-path">this page</span>
+<span class="dim">expected:</span> 200 OK
+<span class="dim">actual:  </span> 404 Not Found</pre>
+        <p>The link may be old, or the page may have moved. These should help:</p>
+        <div class="not-found-actions">
+            <a class="btn btn-primary" href="{{ '/' | relative_url }}">Go to the home page</a>
+            <a class="btn btn-secondary" href="{{ '/blog/' | relative_url }}">Browse the blog</a>
+        </div>
+    </div>
+</section>

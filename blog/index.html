@@ -1,6 +1,9 @@
 ---
-layout: blog
+layout: default
 title: Blog
+body_class: blog-index
+scripts:
+  - /assets/js/blog.js
 description: >-
   Articles by Ehsanul Alam Sabbir on embedded firmware QA, test automation,
   performance and API testing, organised by topic and series.
@@ -10,7 +13,7 @@ description: >-
 
 <section class="blog-hero">
     <div class="container">
-        <p class="blog-eyebrow">Blog &amp; Articles</p>
+        <p class="eyebrow"><span class="eyebrow-num">Blog</span>Articles &amp; series</p>
         <h1>Notes from the test bench</h1>
         <p class="blog-lede">Practical write-ups on testing real products: embedded firmware on hardware, automation frameworks, APIs and performance. Filter by topic or search for what you need.</p>
 
@@ -18,7 +21,7 @@ description: >-
             <label class="blog-search">
                 <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
                 <span class="sr-only">Search articles</span>
-                <input type="search" id="post-search" placeholder="Search articles, e.g. pytest, fixtures, serial" autocomplete="off">
+                <input type="search" id="post-search" placeholder="Search, e.g. pytest, fixtures, serial" autocomplete="off">
             </label>
             <div class="category-filters" role="group" aria-label="Filter by topic">
                 <button type="button" class="chip active" data-filter="all" aria-pressed="true">All <span class="chip-count">{{ site.posts.size }}</span></button>
@@ -41,8 +44,8 @@ description: >-
     <div class="container">
         <div class="series-feature-inner">
             <div class="series-feature-head">
-                <p class="blog-eyebrow"><i class="fas fa-layer-group" aria-hidden="true"></i> Series &middot; {{ parts.size }} parts</p>
-                <h2>{{ group.name }}</h2>
+                <p class="series-label"><i class="fas fa-layer-group" aria-hidden="true"></i> Series &middot; {{ parts.size }} parts</p>
+                <h2 class="series-feature-title">{{ group.name }}</h2>
                 {%- if series_info.description %}
                 <p>{{ series_info.description }}</p>
                 {%- endif %}

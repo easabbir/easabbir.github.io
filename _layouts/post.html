@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: default
 ---
 {%- assign words = content | number_of_words -%}
 {%- assign minutes = words | divided_by: 200 | plus: 1 -%}
@@ -15,7 +15,7 @@ layout: blog
   {%- if idx > 0 -%}{%- assign series_prev = series_posts[prev_idx] -%}{%- endif -%}
   {%- assign series_next = series_posts[next_idx] -%}
 {%- endif -%}
-<article class="post" itemscope itemtype="https://schema.org/BlogPosting">
+<article class="post">
     <header class="post-header">
         <div class="post-container">
             <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -26,17 +26,17 @@ layout: blog
             {%- if page.series %}
             <p class="post-kicker">{{ page.series }} &middot; Part {{ page.part }} of {{ series_posts.size }}</p>
             {%- endif %}
-            <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
+            <h1 class="post-title">{{ page.title }}</h1>
             {%- if page.description %}
-            <p class="post-subtitle" itemprop="description">{{ page.description }}</p>
+            <p class="post-subtitle">{{ page.description }}</p>
             {%- endif %}
             <div class="post-meta">
-                <span class="post-author" itemprop="author">
-                    <img src="{{ '/images/sabbir.jpg' | relative_url }}" alt="" width="36" height="36">
+                <span class="post-author">
+                    <img src="{{ '/images/avatars/sabbir.webp' | relative_url }}" alt="" width="34" height="34">
                     Ehsanul Alam Sabbir
                 </span>
                 <span aria-hidden="true">&middot;</span>
-                <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-d, %Y" }}</time>
+                <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
                 <span aria-hidden="true">&middot;</span>
                 <span>{{ minutes }} min read</span>
             </div>
@@ -52,15 +52,15 @@ layout: blog
             </summary>
             <ol class="series-list">
                 {%- for p in series_posts %}
-                <li{% if p.url == page.url %} class="current" aria-current="page"{% endif %}>
-                    <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+                <li{% if p.url == page.url %} class="current"{% endif %}>
+                    <a href="{{ p.url | relative_url }}"{% if p.url == page.url %} aria-current="page"{% endif %}>{{ p.title }}</a>
                 </li>
                 {%- endfor %}
             </ol>
         </details>
         {%- endif %}
 
-        <div class="post-body" itemprop="articleBody">
+        <div class="post-body">
             {{ content }}
         </div>
 
@@ -73,10 +73,10 @@ layout: blog
         {%- endif %}
 
         <div class="post-share">
-            <span>Share:</span>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url | url_encode }}&amp;text={{ page.title | url_encode }}" target="_blank" rel="noopener" aria-label="Share on X"><i class="fab fa-twitter"></i></a>
-            <button type="button" class="copy-link" data-url="{{ page.url | absolute_url }}" aria-label="Copy link"><i class="fas fa-link"></i></button>
+            <span>Share</span>
+            <a class="icon-btn" href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+            <a class="icon-btn" href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url | url_encode }}&amp;text={{ page.title | url_encode }}" target="_blank" rel="noopener" aria-label="Share on X"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+            <button class="icon-btn" type="button" data-copy="{{ page.url | absolute_url }}" aria-label="Copy link to this article"><i class="fas fa-link" aria-hidden="true"></i></button>
         </div>
 
         {%- if page.series %}
@@ -96,12 +96,12 @@ layout: blog
         </nav>
         {%- endif %}
 
-        <aside class="author-box">
-            <img src="{{ '/images/sabbir.jpg' | relative_url }}" alt="Ehsanul Alam Sabbir" width="64" height="64">
+        <aside class="author-box" aria-label="About the author">
+            <img src="{{ '/images/avatars/sabbir.webp' | relative_url }}" alt="" width="60" height="60" loading="lazy">
             <div>
                 <p class="author-name">Ehsanul Alam Sabbir</p>
                 <p class="author-bio">Staff SQA Engineer with 12+ years in web, mobile, API and performance testing, now testing embedded firmware on real hardware.</p>
-                <a href="{{ '/blog/' | relative_url }}">More articles <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                <a class="link-arrow" href="{{ '/blog/' | relative_url }}">More articles <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
             </div>
         </aside>
     </div>

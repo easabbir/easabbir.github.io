@@ -1,775 +1,667 @@
 ---
-# Front matter lets Jekyll render the latest blog posts into this page.
+layout: default
+body_class: home
+description: >-
+  Ehsanul Alam Sabbir is a Staff SQA Engineer in Dhaka with 12+ years in test
+  automation, API and performance testing, now testing embedded firmware on real hardware.
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ehsanul Alam Sabbir - Staff SQA Engineer Portfolio</title>
-    <meta name="description" content="Ehsanul Alam Sabbir, Staff SQA Engineer: test automation, performance and API testing, and embedded firmware QA on real hardware. Portfolio and blog.">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="assets/css/blog.css">
-    <link rel="alternate" type="application/rss+xml" title="Ehsanul Alam Sabbir - Blog" href="/blog/feed.xml">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-</head>
-<body>
-    <!-- Loading Spinner -->
-    <div id="loading-spinner" class="loading-spinner">
-        <div class="spinner"></div>
-        <p>Loading Portfolio...</p>
-    </div>
-    
-    <!-- Theme Toggle -->
-    <div class="theme-toggle">
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
-            <i class="fas fa-moon"></i>
-        </button>
-    </div>
-    
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h2>Ehsanul Alam Sabbir</h2>
+
+<!-- Hero -->
+<section class="hero" id="home" aria-labelledby="hero-title">
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-copy">
+                <p class="hero-status"><span class="status-dot" aria-hidden="true"></span>Staff SQA Engineer &middot; Vivasoft Limited &middot; Dhaka</p>
+                <h1 class="hero-title" id="hero-title">Ehsanul Alam Sabbir</h1>
+                <p class="hero-lead">I&rsquo;ve spent 12+ years testing fintech, banking, ride-sharing and food-delivery products: building test automation, running performance tests and coaching QA teams. These days I also test embedded firmware on real hardware.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#projects">View my work <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
+                    <a class="btn btn-secondary" href="{{ site.resume_url }}" target="_blank" rel="noopener"><i class="fas fa-file-lines" aria-hidden="true"></i> Resume (PDF)</a>
+                </div>
+                <ul class="hero-social" aria-label="Profiles">
+                    <li><a class="icon-btn" href="https://www.linkedin.com/in/ehsanul-alam-sabbir/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+                    <li><a class="icon-btn" href="https://github.com/easabbir" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+                    <li><a class="icon-btn" href="https://www.facebook.com/ehsanul.sabbir/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                </ul>
             </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
+
+            <div class="hero-visual">
+                <figure class="portrait">
+                    <picture>
+                        <source srcset="{{ '/images/sabbir-portrait.webp' | relative_url }}" type="image/webp">
+                        <img src="{{ '/images/sabbir-portrait.jpg' | relative_url }}" alt="Portrait of Ehsanul Alam Sabbir" width="580" height="725" fetchpriority="high">
+                    </picture>
+                </figure>
+                <div class="run-card" aria-hidden="true">
+                    <p><span class="run-prompt">$</span> pytest career/</p>
+                    <p><span class="run-ok">&#10003;</span> test_web_and_mobile</p>
+                    <p><span class="run-ok">&#10003;</span> test_api_and_performance</p>
+                    <p><span class="run-ok">&#10003;</span> test_embedded_firmware</p>
+                    <p class="run-summary">3 passed in 12+ years</p>
+                </div>
+            </div>
+        </div>
+
+        <dl class="hero-stats">
+            <div class="hero-stat"><dt>Years in QA</dt><dd>12+</dd></div>
+            <div class="hero-stat"><dt>Major projects</dt><dd>9+</dd></div>
+            <div class="hero-stat"><dt>Companies</dt><dd>6</dd></div>
+            <div class="hero-stat"><dt>Articles published</dt><dd>{{ site.posts.size }}</dd></div>
+        </dl>
+    </div>
+</section>
+
+<!-- About -->
+<section class="section about" id="about" aria-labelledby="about-title">
+    <div class="container about-grid">
+        <div class="about-text" data-reveal>
+            <p class="eyebrow"><span class="eyebrow-num">01</span>About</p>
+            <h2 class="section-title" id="about-title">Quality engineering, from web apps to firmware</h2>
+            <p>I&rsquo;m a Staff SQA Engineer at Vivasoft Limited with more than 12 years in software quality assurance. I&rsquo;ve tested food-aggregator, fintech, banking and ride-sharing products, on the web and on mobile.</p>
+            <p>My work covers manual and automated testing with Cypress, Playwright, Selenium and Appium, API testing with Postman, and performance testing with JMeter, K6 and Locust. More recently I&rsquo;ve moved into embedded systems: integration-testing firmware on real IoT hardware with pytest over a serial CLI, wired into hardware CI.</p>
+            <p>I also mentor junior engineers and help teams build testing into their agile process, so releases ship with fewer surprises.</p>
+        </div>
+
+        <ul class="focus-list" data-reveal-group aria-label="What I work on">
+            <li class="focus-item" data-reveal>
+                <span class="focus-icon" aria-hidden="true"><i class="fas fa-robot"></i></span>
+                <div>
+                    <h3>Test automation</h3>
+                    <p>Cypress, Playwright, Selenium and Appium frameworks for web and mobile apps.</p>
+                </div>
+            </li>
+            <li class="focus-item" data-reveal>
+                <span class="focus-icon" aria-hidden="true"><i class="fas fa-gauge-high"></i></span>
+                <div>
+                    <h3>API &amp; performance</h3>
+                    <p>Postman and REST Assured for APIs; JMeter, K6 and Locust for load testing.</p>
+                </div>
+            </li>
+            <li class="focus-item" data-reveal>
+                <span class="focus-icon" aria-hidden="true"><i class="fas fa-microchip"></i></span>
+                <div>
+                    <h3>Embedded &amp; firmware</h3>
+                    <p>pytest suites on real IoT hardware over a serial CLI, running in hardware CI.</p>
+                </div>
+            </li>
+            <li class="focus-item" data-reveal>
+                <span class="focus-icon" aria-hidden="true"><i class="fas fa-users"></i></span>
+                <div>
+                    <h3>Team &amp; process</h3>
+                    <p>Mentoring QA engineers, agile delivery and UAT coordination.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- Experience -->
+<section class="section experience" id="experience" aria-labelledby="experience-title">
+    <div class="container">
+        <header class="section-head" data-reveal>
+            <p class="eyebrow"><span class="eyebrow-num">02</span>Experience</p>
+            <h2 class="section-title" id="experience-title">Where I&rsquo;ve worked</h2>
+        </header>
+
+        <ol class="timeline">
+            <li class="timeline-item is-current" data-reveal>
+                <div class="timeline-when">
+                    <span class="timeline-date">2022 &ndash; Present</span>
+                    <span class="timeline-badge">Current</span>
+                </div>
+                <div class="timeline-body">
+                    <h3 class="timeline-role">Staff SQA Engineer</h3>
+                    <p class="timeline-company">Vivasoft Limited</p>
+                    <p>Leading quality assurance for the food-aggregator platform Klikit: designed the Cypress automation framework, ran performance testing with JMeter and mentored junior team members. Now also leading embedded QA: a pytest integration suite for a cellular IoT gateway&rsquo;s firmware, run on real hardware over USB serial and in Jenkins hardware CI.</p>
+                    <ul class="tag-list">
+                        <li>Team leadership</li>
+                        <li>Automation frameworks</li>
+                        <li>Performance testing</li>
+                        <li>Embedded / IoT testing</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="timeline-item" data-reveal>
+                <div class="timeline-when">
+                    <span class="timeline-date">2021 &ndash; 2022</span>
+                </div>
+                <div class="timeline-body">
+                    <h3 class="timeline-role">Senior SQA Engineer</h3>
+                    <p class="timeline-company">Spenn (fintech)</p>
+                    <p>Fintech product testing with a focus on API testing in Postman and performance testing with JMeter and K6. Led the testing strategy for financial transactions and security protocols.</p>
+                    <ul class="tag-list">
+                        <li>Fintech testing</li>
+                        <li>API testing</li>
+                        <li>Security testing</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="timeline-item" data-reveal>
+                <div class="timeline-when">
+                    <span class="timeline-date">2019 &ndash; 2021</span>
+                </div>
+                <div class="timeline-body">
+                    <h3 class="timeline-role">SQA Engineer</h3>
+                    <p class="timeline-company">BRAC Bank Limited</p>
+                    <p>Ran the full testing lifecycle for the mRemit banking system: functional, integration, regression and performance testing. Coordinated UAT and made sure releases met banking regulations.</p>
+                    <ul class="tag-list">
+                        <li>Banking systems</li>
+                        <li>Regulatory compliance</li>
+                        <li>UAT coordination</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="timeline-item" data-reveal>
+                <div class="timeline-when">
+                    <span class="timeline-date">2017 &ndash; 2019</span>
+                </div>
+                <div class="timeline-body">
+                    <h3 class="timeline-role">QA Engineer</h3>
+                    <p class="timeline-company">Pathao</p>
+                    <p>Tested ride-sharing and delivery services, including mobile app automation with Appium and API testing, across multiple platforms and user interfaces.</p>
+                    <ul class="tag-list">
+                        <li>Mobile testing</li>
+                        <li>Appium automation</li>
+                        <li>Multi-platform QA</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="timeline-item" data-reveal>
+                <div class="timeline-when">
+                    <span class="timeline-date">2015 &ndash; 2017</span>
+                </div>
+                <div class="timeline-body">
+                    <h3 class="timeline-role">Software Tester</h3>
+                    <p class="timeline-company">MISL (Management Information Systems Limited)</p>
+                    <p>Manual testing and test automation for the Islamic banking software ABABIL. Wrote test cases and ran functional and regression testing for core banking operations.</p>
+                    <ul class="tag-list">
+                        <li>Core banking</li>
+                        <li>Test automation</li>
+                        <li>Islamic banking</li>
+                    </ul>
+                </div>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<!-- Projects -->
+<section class="section projects" id="projects" aria-labelledby="projects-title">
+    <div class="container">
+        <header class="section-head" data-reveal>
+            <p class="eyebrow"><span class="eyebrow-num">03</span>Projects</p>
+            <h2 class="section-title" id="projects-title">Selected projects</h2>
+            <p class="section-intro">Products I&rsquo;ve tested, from core banking and fintech apps to firmware on IoT hardware.</p>
+        </header>
+
+        <div class="projects-grid" data-reveal-group>
+            <article class="project-card project-card--featured" data-reveal data-spotlight>
+                <div class="project-body">
+                    <div class="project-head">
+                        <span class="project-logo project-logo--icon" aria-hidden="true"><i class="fas fa-microchip"></i></span>
+                        <div>
+                            <h3>Cellular IoT gateway firmware</h3>
+                            <p class="project-meta">Embedded QA &middot; Vivasoft Limited</p>
+                        </div>
+                    </div>
+                    <p>Integration test suite for firmware running on an LTE module in a smart-metering product. Every test runs on a real unit over a USB serial CLI, with no mocks, and Jenkins flashes and tests each build.</p>
+                    <ul class="project-tech" aria-label="Tools">
+                        <li>pytest</li>
+                        <li>Python</li>
+                        <li>Serial CLI</li>
+                        <li>Jenkins</li>
+                    </ul>
+                    <a class="project-link" href="{{ '/blog/testing-firmware-on-real-hardware/' | relative_url }}">Read the case study <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="code-panel" aria-hidden="true">
+                    <div class="code-panel-bar">
+                        <span class="code-file">fault-injection test</span>
+                        <span class="code-status"><i class="fas fa-check"></i> passed</span>
+                    </div>
+<pre><code><span class="tk-d">@pytest_item</span>
+<span class="tk-k">def</span> <span class="tk-f">unknown_command_FI</span>(log_fetcher, param,
+                       verify_cli_recovery):
+    <span class="tk-s">"""Unknown commands are rejected."""</span>
+    expected = <span class="tk-s">f"unknown command: {param}"</span>
+    logs = log_fetcher.send_and_get_until_pattern(
+        param, expected, module=<span class="tk-s">"CLI"</span>,
+        level=LogLevel.ERROR)
+    <span class="tk-k">assert</span> logs.contains(expected)</code></pre>
+                </div>
+            </article>
+
+            <article class="project-card" data-reveal data-spotlight>
+                <div class="project-head">
+                    <span class="project-logo"><img src="{{ '/images/logos/klikit.png' | relative_url }}" alt="" width="48" height="48" loading="lazy"></span>
+                    <div>
+                        <h3>Klikit</h3>
+                        <p class="project-meta">Food-aggregator platform</p>
+                    </div>
+                </div>
+                <p>Quality for the web and mobile apps, with Cypress automation and performance testing.</p>
+                <ul class="project-tech" aria-label="Tools">
+                    <li>Cypress</li>
+                    <li>JMeter</li>
+                    <li>Postman</li>
+                    <li>Burp Suite</li>
+                </ul>
+                <a class="project-link" href="https://klikit.io/" target="_blank" rel="noopener">klikit.io <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+            </article>
+
+            <article class="project-card" data-reveal data-spotlight>
+                <div class="project-head">
+                    <span class="project-logo"><img src="{{ '/images/logos/spenn.png' | relative_url }}" alt="" width="48" height="48" loading="lazy"></span>
+                    <div>
+                        <h3>Spenn</h3>
+                        <p class="project-meta">Fintech app</p>
+                    </div>
+                </div>
+                <p>Manual and API testing for a fintech product, plus performance testing with JMeter and K6 and mentoring the test team.</p>
+                <ul class="project-tech" aria-label="Tools">
+                    <li>Postman</li>
+                    <li>JMeter</li>
+                    <li>K6</li>
+                    <li>REST Assured</li>
+                </ul>
+                <a class="project-link" href="https://www.spenn.com/" target="_blank" rel="noopener">spenn.com <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+            </article>
+
+            <article class="project-card" data-reveal data-spotlight>
+                <div class="project-head">
+                    <span class="project-logo"><img src="{{ '/images/logos/brac.png' | relative_url }}" alt="" width="48" height="48" loading="lazy"></span>
+                    <div>
+                        <h3>mRemit</h3>
+                        <p class="project-meta">Remittance system &middot; BRAC Bank</p>
+                    </div>
+                </div>
+                <p>Full testing lifecycle for a remittance system: functional, integration, regression and performance testing, with UAT coordination.</p>
+                <ul class="project-tech" aria-label="Tools">
+                    <li>Postman</li>
+                    <li>JMeter</li>
+                    <li>SQL</li>
+                    <li>Banking APIs</li>
+                </ul>
+                <a class="project-link" href="https://www.bracbank.com/en" target="_blank" rel="noopener">bracbank.com <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+            </article>
+
+            <article class="project-card" data-reveal data-spotlight>
+                <div class="project-head">
+                    <span class="project-logo"><img src="{{ '/images/logos/pathao.png' | relative_url }}" alt="" width="48" height="48" loading="lazy"></span>
+                    <div>
+                        <h3>Pathao</h3>
+                        <p class="project-meta">Ride-sharing &amp; delivery</p>
+                    </div>
+                </div>
+                <p>Testing for ride-sharing and delivery services, including mobile app automation with Appium and API testing.</p>
+                <ul class="project-tech" aria-label="Tools">
+                    <li>Appium</li>
+                    <li>JMeter</li>
+                    <li>Postman</li>
+                    <li>Burp Suite</li>
+                </ul>
+                <a class="project-link" href="https://pathao.com/bn/" target="_blank" rel="noopener">pathao.com <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+            </article>
+
+            <article class="project-card" data-reveal data-spotlight>
+                <div class="project-head">
+                    <span class="project-logo"><img src="{{ '/images/logos/pihr.png' | relative_url }}" alt="" width="48" height="48" loading="lazy"></span>
+                    <div>
+                        <h3>PiHR</h3>
+                        <p class="project-meta">HR management &middot; security testing</p>
+                    </div>
+                </div>
+                <p>Security testing with Burp Suite and performance testing with JMeter and Locust for an HR management system.</p>
+                <ul class="project-tech" aria-label="Tools">
+                    <li>Burp Suite</li>
+                    <li>JMeter</li>
+                    <li>Locust</li>
+                    <li>Security testing</li>
+                </ul>
+                <a class="project-link" href="https://mypihr.com/" target="_blank" rel="noopener">mypihr.com <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+            </article>
+
+            <article class="project-card" data-reveal data-spotlight>
+                <div class="project-head">
+                    <span class="project-logo"><img src="{{ '/images/logos/ababil.png' | relative_url }}" alt="" width="48" height="48" loading="lazy"></span>
+                    <div>
+                        <h3>ABABIL core banking</h3>
+                        <p class="project-meta">Islamic banking &middot; MISL</p>
+                    </div>
+                </div>
+                <p>Manual testing and test automation for Islamic core banking software, with functional and regression testing.</p>
+                <ul class="project-tech" aria-label="Tools">
+                    <li>Postman</li>
+                    <li>SQL</li>
+                    <li>Banking systems</li>
+                    <li>Database testing</li>
+                </ul>
+                <a class="project-link" href="https://mislbd.com/ababil/" target="_blank" rel="noopener">mislbd.com <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+            </article>
+
+            <article class="project-card" data-reveal data-spotlight>
+                <div class="project-head">
+                    <span class="project-logo"><img src="{{ '/images/logos/xsolla.svg' | relative_url }}" alt="" width="48" height="48" loading="lazy"></span>
+                    <div>
+                        <h3>Xsolla</h3>
+                        <p class="project-meta">Partner network team</p>
+                    </div>
+                </div>
+                <p>Built a Playwright automation framework from scratch, ran performance tests with Locust and handled manual and regression testing. Led knowledge-sharing sessions and mentored junior automation engineers.</p>
+                <ul class="project-tech" aria-label="Tools">
+                    <li>Playwright</li>
+                    <li>Postman</li>
+                    <li>Locust</li>
+                    <li>Performance testing</li>
+                </ul>
+                <a class="project-link" href="https://xsolla.com/" target="_blank" rel="noopener">xsolla.com <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section class="section skills" id="skills" aria-labelledby="skills-title">
+    <div class="container">
+        <header class="section-head" data-reveal>
+            <p class="eyebrow"><span class="eyebrow-num">04</span>Skills</p>
+            <h2 class="section-title" id="skills-title">Tools and techniques</h2>
+        </header>
+
+        <div class="skills-grid" data-reveal-group>
+            <div class="skill-group" data-reveal>
+                <h3><i class="fas fa-robot" aria-hidden="true"></i> Test automation</h3>
+                <ul class="skill-items">
+                    <li class="skill-item">Selenium</li>
+                    <li class="skill-item">Playwright</li>
+                    <li class="skill-item">Cypress</li>
+                    <li class="skill-item">Appium</li>
+                    <li class="skill-item">REST Assured</li>
+                    <li class="skill-item">Postman automation</li>
+                </ul>
+            </div>
+            <div class="skill-group" data-reveal>
+                <h3><i class="fas fa-toolbox" aria-hidden="true"></i> Testing tools</h3>
+                <ul class="skill-items">
+                    <li class="skill-item">JMeter</li>
+                    <li class="skill-item">Postman</li>
+                    <li class="skill-item">Burp Suite</li>
+                    <li class="skill-item">Locust</li>
+                    <li class="skill-item">K6</li>
+                    <li class="skill-item">JIRA</li>
+                </ul>
+            </div>
+            <div class="skill-group" data-reveal>
+                <h3><i class="fas fa-code" aria-hidden="true"></i> Programming &amp; databases</h3>
+                <ul class="skill-items">
+                    <li class="skill-item">Java</li>
+                    <li class="skill-item">SQL</li>
+                    <li class="skill-item">JavaScript</li>
+                    <li class="skill-item">Python</li>
+                    <li class="skill-item">Database testing</li>
+                </ul>
+            </div>
+            <div class="skill-group skill-group--wide" data-reveal>
+                <h3><i class="fas fa-microchip" aria-hidden="true"></i> Embedded &amp; firmware testing</h3>
+                <ul class="skill-items">
+                    <li class="skill-item">pytest</li>
+                    <li class="skill-item">Firmware integration testing</li>
+                    <li class="skill-item">Serial / USB CLI testing</li>
+                    <li class="skill-item">Fault injection</li>
+                    <li class="skill-item">IoT / LTE devices</li>
+                    <li class="skill-item">Hardware CI (Jenkins)</li>
+                </ul>
+                <a class="link-arrow" href="{{ '/blog/' | relative_url }}#embedded-qa">Read the Embedded QA series <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+            <div class="skill-group" data-reveal>
+                <h3><i class="fas fa-arrows-rotate" aria-hidden="true"></i> Methodologies &amp; CI/CD</h3>
+                <ul class="skill-items">
+                    <li class="skill-item">Agile</li>
+                    <li class="skill-item">Scrum</li>
+                    <li class="skill-item">Jenkins</li>
+                    <li class="skill-item">GitHub Actions</li>
+                    <li class="skill-item">Regression testing</li>
+                    <li class="skill-item">Performance testing</li>
+                    <li class="skill-item">User acceptance testing</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Recommendations -->
+<section class="section testimonials" id="testimonials" aria-labelledby="testimonials-title">
+    <div class="container">
+        <header class="section-head" data-reveal>
+            <p class="eyebrow"><span class="eyebrow-num">05</span>Recommendations</p>
+            <h2 class="section-title" id="testimonials-title">What colleagues and clients say</h2>
+            <p class="section-intro">Six recommendations from my LinkedIn profile, from clients, managers and teammates.</p>
+        </header>
+
+        <div class="testimonials-grid" data-reveal>
+            <figure class="testimonial-card">
+                <blockquote class="testimonial-text">
+                    <p>Sabbir was an absolute pleasure to work with whilst on QA at klikit. His diligence and attention to detail are first rate - and I highly recommend him on any technology business new or old. He's a sharp thinker, with a great attitude!</p>
+                </blockquote>
+                <figcaption class="testimonial-author">
+                    <img class="author-avatar" src="{{ '/images/avatars/chris.webp' | relative_url }}" alt="" width="44" height="44" loading="lazy">
+                    <span class="author-info">
+                        <span class="author-name">Chris Withers</span>
+                        <span class="author-role">Client at Klikit</span>
+                    </span>
+                    <span class="testimonial-source"><i class="fab fa-linkedin" aria-hidden="true"></i><time datetime="2024-08-17">Aug 2024</time></span>
+                </figcaption>
+            </figure>
+
+            <figure class="testimonial-card">
+                <blockquote class="testimonial-text">
+                    <p>Sabbir has been a valuable member of our team, performing his tasks with excellence and always giving great insight. Highly recommended.</p>
+                </blockquote>
+                <figcaption class="testimonial-author">
+                    <img class="author-avatar" src="{{ '/images/avatars/magne.webp' | relative_url }}" alt="" width="44" height="44" loading="lazy">
+                    <span class="author-info">
+                        <span class="author-name">Magne Fretheim</span>
+                        <span class="author-role">CTO / Data-Driven Technology Executive</span>
+                    </span>
+                    <span class="testimonial-source"><i class="fab fa-linkedin" aria-hidden="true"></i><time datetime="2023-06-02">Jun 2023</time></span>
+                </figcaption>
+            </figure>
+
+            <figure class="testimonial-card">
+                <blockquote class="testimonial-text">
+                    <p>Sabbir is a very resourceful test engineer in our software industry with diverse capabilities. His ability to know about the whole product life cycle and bug findings are extraordinary. I wish him success in his ventures.</p>
+                </blockquote>
+                <figcaption class="testimonial-author">
+                    <img class="author-avatar" src="{{ '/images/avatars/fahim.webp' | relative_url }}" alt="" width="44" height="44" loading="lazy">
+                    <span class="author-info">
+                        <span class="author-name">Fahim Ashfak</span>
+                        <span class="author-role">Teammate</span>
+                    </span>
+                    <span class="testimonial-source"><i class="fab fa-linkedin" aria-hidden="true"></i><time datetime="2021-03-28">Mar 2021</time></span>
+                </figcaption>
+            </figure>
+
+            <figure class="testimonial-card">
+                <blockquote class="testimonial-text">
+                    <p>Great teammate, with depth Knowledge in the Software QA aspect. Sometimes he is trying to ease my work on the time of development warning with some cause, such as an experienced in the technology domain. He is so open and keen to learn new things. I am always recommended him as a great QA engineer. An overall nice human being.</p>
+                </blockquote>
+                <figcaption class="testimonial-author">
+                    <img class="author-avatar" src="{{ '/images/avatars/ali.webp' | relative_url }}" alt="" width="44" height="44" loading="lazy">
+                    <span class="author-info">
+                        <span class="author-name">Ali Ahmed</span>
+                        <span class="author-role">Android Developer</span>
+                    </span>
+                    <span class="testimonial-source"><i class="fab fa-linkedin" aria-hidden="true"></i><time datetime="2021-03-21">Mar 2021</time></span>
+                </figcaption>
+            </figure>
+
+            <figure class="testimonial-card">
+                <blockquote class="testimonial-text">
+                    <p>I had the pleasure of working with Sabbir bhai and have to say he is extremely dedicated and is great with his work. A talented individual always exploring new techniques and technology and can easily blend in with any team he works in. As a team member I would highly recommend him any day!</p>
+                </blockquote>
+                <figcaption class="testimonial-author">
+                    <img class="author-avatar" src="{{ '/images/avatars/maheen.webp' | relative_url }}" alt="" width="44" height="44" loading="lazy">
+                    <span class="author-info">
+                        <span class="author-name">Maheen Neha</span>
+                        <span class="author-role">Sr. Product Manager, Optimizely</span>
+                    </span>
+                    <span class="testimonial-source"><i class="fab fa-linkedin" aria-hidden="true"></i><time datetime="2021-02-23">Feb 2021</time></span>
+                </figcaption>
+            </figure>
+
+            <figure class="testimonial-card">
+                <blockquote class="testimonial-text">
+                    <p>Ehsanul and I completed the BS and MS degrees from the same universities. He is a great team player and very cautious about the IT industry. Once he quit a lucrative job offer, I can remember just because it didn't have that much career prospect. He was right! Later, he worked for some of the biggest tech companies in our country by proving his talent and constantly upgrading himself. Apart from the technical aspect, Ehsanul is a great human being. He is connected with numerous volunteering organizations and spends a lot of time for the good of society. The best part is he cares about others selflessly. I also admire him for his athletic activities like running 5Ks or knocking a ton in a local cricket tournament. Suppose you come across his profile and thinking about getting connected? Then, just get hooked. He will help you regarding any business or social cause.</p>
+                </blockquote>
+                <figcaption class="testimonial-author">
+                    <img class="author-avatar" src="{{ '/images/avatars/shahpar.webp' | relative_url }}" alt="" width="44" height="44" loading="lazy">
+                    <span class="author-info">
+                        <span class="author-name">Shahpar Islam</span>
+                        <span class="author-role">Assistant Professor | AWS Authorized</span>
+                    </span>
+                    <span class="testimonial-source"><i class="fab fa-linkedin" aria-hidden="true"></i><time datetime="2020-12-20">Dec 2020</time></span>
+                </figcaption>
+            </figure>
+        </div>
+
+        <p class="testimonials-cta">Worked with me? <a class="link-arrow" href="https://www.linkedin.com/in/ehsanul-alam-sabbir/" target="_blank" rel="noopener">Leave a recommendation on LinkedIn <i class="fas fa-arrow-right" aria-hidden="true"></i></a></p>
+    </div>
+</section>
+
+<!-- Writing -->
+<section class="section writing" id="blog" aria-labelledby="blog-title">
+    <div class="container">
+        <header class="section-head section-head--split" data-reveal>
+            <div>
+                <p class="eyebrow"><span class="eyebrow-num">06</span>Writing</p>
+                <h2 class="section-title" id="blog-title">Notes from the test bench</h2>
+                <p class="section-intro">Write-ups from real projects: embedded firmware on hardware, test automation, APIs and performance.</p>
+            </div>
+            <a class="btn btn-secondary" href="{{ '/blog/' | relative_url }}">All {{ site.posts.size }} articles <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        </header>
+
+        {%- assign series_groups = site.posts | where_exp: "p", "p.series" | group_by: "series" -%}
+        {%- for group in series_groups limit: 1 %}
+        {%- assign parts = group.items | sort: "part" -%}
+        {%- assign first = parts | first -%}
+        {%- assign series_info = site.data.series | where: "name", group.name | first -%}
+        <div class="series-feature-inner" data-reveal>
+            <div class="series-feature-head">
+                <p class="series-label"><i class="fas fa-layer-group" aria-hidden="true"></i> Series &middot; {{ parts.size }} parts</p>
+                <h3 class="series-feature-title">{{ group.name }}</h3>
+                {%- if series_info.description %}
+                <p>{{ series_info.description }}</p>
+                {%- endif %}
+                <a class="btn btn-primary" href="{{ first.url | relative_url }}">Start with Part 1 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+            <ol class="series-feature-list">
+                {%- for p in parts limit: 5 %}
+                <li>
+                    <a href="{{ p.url | relative_url }}">
+                        <span class="series-num">{{ p.part | prepend: '0' | slice: -2, 2 }}</span>
+                        <span class="series-text">
+                            <span class="series-title">{{ p.title }}</span>
+                            <span class="series-desc">{{ p.description }}</span>
+                        </span>
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
+                {%- endfor %}
+            </ol>
+        </div>
+        {%- endfor %}
+
+        {%- assign standalone = site.posts | where_exp: "p", "p.series == nil" %}
+        {%- if standalone.size > 0 %}
+        <div class="post-grid" data-reveal>
+            {%- for post in standalone limit: 3 %}
+            {% include post-card.html post=post %}
+            {%- endfor %}
+        </div>
+        {%- endif %}
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="container contact-grid">
+        <div class="contact-intro" data-reveal>
+            <p class="eyebrow"><span class="eyebrow-num">07</span>Contact</p>
+            <h2 class="section-title" id="contact-title">Let&rsquo;s talk</h2>
+            <p class="section-intro">Hiring for a QA role, stuck on a testing problem, or have a question about one of my articles? Send a message or reach me directly.</p>
+
+            <ul class="contact-list">
+                <li class="contact-item">
+                    <span class="contact-icon" aria-hidden="true"><i class="fas fa-envelope"></i></span>
+                    <div class="contact-detail">
+                        <span class="contact-label">Work email</span>
+                        <a class="contact-value" href="mailto:ehsanul.alam@vivasoftltd.com">ehsanul.alam@vivasoftltd.com</a>
+                    </div>
+                    <button class="icon-btn copy-btn" type="button" data-copy="ehsanul.alam@vivasoftltd.com" aria-label="Copy work email address"><i class="far fa-copy" aria-hidden="true"></i></button>
                 </li>
-                <li class="nav-item">
-                    <a href="#experience" class="nav-link">Experience</a>
+                <li class="contact-item">
+                    <span class="contact-icon" aria-hidden="true"><i class="fas fa-at"></i></span>
+                    <div class="contact-detail">
+                        <span class="contact-label">Personal email</span>
+                        <a class="contact-value" href="mailto:easabbir@gmail.com">easabbir@gmail.com</a>
+                    </div>
+                    <button class="icon-btn copy-btn" type="button" data-copy="easabbir@gmail.com" aria-label="Copy personal email address"><i class="far fa-copy" aria-hidden="true"></i></button>
                 </li>
-                <li class="nav-item">
-                    <a href="#testimonials" class="nav-link">Testimonials</a>
+                <li class="contact-item">
+                    <span class="contact-icon" aria-hidden="true"><i class="fas fa-phone"></i></span>
+                    <div class="contact-detail">
+                        <span class="contact-label">Phone</span>
+                        <a class="contact-value" href="tel:+8801670102216">+880 1670102216</a>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a href="#skills" class="nav-link">Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#projects" class="nav-link">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#certifications" class="nav-link">Certifications</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#blog" class="nav-link">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#resume" class="nav-link resume-btn">Resume</a>
+                <li class="contact-item">
+                    <span class="contact-icon" aria-hidden="true"><i class="fas fa-location-dot"></i></span>
+                    <div class="contact-detail">
+                        <span class="contact-label">Location</span>
+                        <span class="contact-value">Dhaka, Bangladesh</span>
+                    </div>
                 </li>
             </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero" data-aos="fade-up">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    Hi, I'm <span class="highlight">Ehsanul Alam Sabbir</span>
-                </h1>
-                <p class="hero-subtitle">Staff SQA Engineer & Quality Assurance Expert</p>
-                <p class="hero-description">
-                    12+ years of experience in software quality assurance, test automation, and ensuring high-quality web, mobile and embedded products across fintech, food aggregator, banking and IoT domains.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
-                <div class="hero-social">
-                    <a href="https://www.linkedin.com/in/ehsanul-alam-sabbir/" class="hero-social-link" target="_blank" aria-label="LinkedIn Profile">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/easabbir" class="hero-social-link" target="_blank" aria-label="GitHub Profile">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.facebook.com/ehsanul.sabbir/" class="hero-social-link" target="_blank" aria-label="Facebook Profile">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="profile-card">
-                    <div class="profile-avatar">
-                        <img src="images/sabbir.jpg" alt="Ehsanul Alam Sabbir - Staff SQA Engineer" class="profile-img">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about" data-aos="fade-up">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I'm a dedicated Staff SQA Engineer with over 12 years of experience in software quality assurance, test automation, and quality processes. 
-                        Currently working at Vivasoft Limited, I specialize in ensuring high-quality web and mobile applications for food aggregator services, 
-                        with extensive experience in fintech, banking, and ride-sharing domains.
-                    </p>
-                    <p>
-                        My expertise spans manual testing, automation testing using Cypress and Selenium, API testing with Postman, performance testing with JMeter, 
-                        and mobile app testing with Appium. More recently I have moved into embedded systems testing: integration-testing firmware on real IoT hardware with pytest over a serial CLI, wired into hardware CI. I have a strong background in agile methodologies, mentoring junior team members, 
-                        and delivering comprehensive testing solutions that ensure product reliability and user satisfaction.
-                    </p>
-                </div>
-                <div class="about-stats">
-                    <div class="stat">
-                        <h3>12+</h3>
-                        <p>Years Experience</p>
-                    </div>
-                    <div class="stat">
-                        <h3>9+</h3>
-                        <p>Major Projects</p>
-                    </div>
-                    <div class="stat">
-                        <h3>6</h3>
-                        <p>Companies Served</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Timeline Section -->
-    <section id="experience" class="experience" data-aos="fade-up">
-        <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2022 - Present</div>
-                        <h3>Staff SQA Engineer</h3>
-                        <h4>Vivasoft Limited</h4>
-                        <p>Leading quality assurance initiatives for food aggregator platform Klikit. Designed comprehensive automation frameworks using Cypress, conducted performance testing with JMeter, and mentored junior team members in best practices. Now also leading embedded QA: a pytest integration suite for a cellular IoT gateway's firmware, run on real hardware over USB serial and in Jenkins hardware CI.</p>
-                        <div class="timeline-achievements">
-                            <span class="achievement">Team Leadership</span>
-                            <span class="achievement">Automation Framework</span>
-                            <span class="achievement">Performance Testing</span>
-                            <span class="achievement">Embedded / IoT Testing</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2021 - 2022</div>
-                        <h3>Senior SQA Engineer</h3>
-                        <h4>Spenn (Fintech)</h4>
-                        <p>Specialized in fintech product testing with focus on API testing using Postman and performance testing using JMeter and K6. Led comprehensive testing strategies for financial transactions and security protocols.</p>
-                        <div class="timeline-achievements">
-                            <span class="achievement">Fintech Testing</span>
-                            <span class="achievement">API Testing</span>
-                            <span class="achievement">Security Testing</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2019 - 2021</div>
-                        <h3>SQA Engineer</h3>
-                        <h4>BRAC Bank Limited</h4>
-                        <p>Conducted complete testing lifecycle for mRemit banking system including functional, integration, regression, and performance testing. Coordinated UAT processes and ensured compliance with banking regulations.</p>
-                        <div class="timeline-achievements">
-                            <span class="achievement">Banking Systems</span>
-                            <span class="achievement">Regulatory Compliance</span>
-                            <span class="achievement">UAT Coordination</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2017 - 2019</div>
-                        <h3>QA Engineer</h3>
-                        <h4>Pathao</h4>
-                        <p>Comprehensive testing for ride-sharing and delivery services including mobile app automation testing using Appium and API testing. Ensured quality across multiple platforms and user interfaces.</p>
-                        <div class="timeline-achievements">
-                            <span class="achievement">Mobile Testing</span>
-                            <span class="achievement">Appium Automation</span>
-                            <span class="achievement">Multi-platform QA</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2015 - 2017</div>
-                        <h3>Software Tester</h3>
-                        <h4>MISL (Management Information Systems Limited)</h4>
-                        <p>Manual testing and test automation for Islamic banking software ABABIL. Developed comprehensive test cases and performed functional and regression testing for core banking operations.</p>
-                        <div class="timeline-achievements">
-                            <span class="achievement">Core Banking</span>
-                            <span class="achievement">Test Automation</span>
-                            <span class="achievement">Islamic Banking</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials" data-aos="fade-up">
-        <div class="container">
-            <h2 class="section-title">Testimonials & Recommendations</h2>
-            <p class="section-subtitle">What colleagues and clients say about my work</p>
-            
-            <div class="testimonials-grid">
-                <!-- Testimonial 1 - Chris Withers -->
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "Sabbir was an absolute pleasure to work with whilst on QA at klikit. His diligence and attention to detail are first rate - and I highly recommend him on any technology business new or old. He's a sharp thinker, with a great attitude!"
-                        </p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="images/linkedinTestimonialsImages/chris.jpeg" alt="Chris Withers">
-                        </div>
-                        <div class="author-info">
-                            <h4>Chris Withers</h4>
-                            <p>Client at Klikit • August 17, 2024</p>
-                            <div class="linkedin-badge">
-                                <i class="fab fa-linkedin"></i>
-                                <span>LinkedIn Recommendation</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 2 - Magne Fretheim -->
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "Sabbir has been a valuable member of our team, performing his tasks with excellence and always giving great insight. Highly recommended."
-                        </p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="images/linkedinTestimonialsImages/magne.jpeg" alt="Magne Fretheim">
-                        </div>
-                        <div class="author-info">
-                            <h4>Magne Fretheim</h4>
-                            <p>CTO / Data-Driven Technology Executive • June 2, 2023</p>
-                            <div class="linkedin-badge">
-                                <i class="fab fa-linkedin"></i>
-                                <span>LinkedIn Recommendation</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3 - Fahim Ashfak -->
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "Sabbir is a very resourceful test engineer in our software industry with diverse capabilities. His ability to know about the whole product life cycle and bug findings are extraordinary. I wish him success in his ventures."
-                        </p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="images/linkedinTestimonialsImages/fahim.jpeg" alt="Fahim Ashfak">
-                        </div>
-                        <div class="author-info">
-                            <h4>Fahim Ashfak</h4>
-                            <p>Teammate • March 28, 2021</p>
-                            <div class="linkedin-badge">
-                                <i class="fab fa-linkedin"></i>
-                                <span>LinkedIn Recommendation</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 4 - Ali Ahmed -->
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "Great teammate, with depth Knowledge in the Software QA aspect. Sometimes he is trying to ease my work on the time of development warning with some cause, such as an experienced in the technology domain. He is so open and keen to learn new things. I am always recommended him as a great QA engineer. An overall nice human being."
-                        </p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="images/linkedinTestimonialsImages/ali.jpeg" alt="Ali Ahmed">
-                        </div>
-                        <div class="author-info">
-                            <h4>Ali Ahmed</h4>
-                            <p>Android Developer • March 21, 2021</p>
-                            <div class="linkedin-badge">
-                                <i class="fab fa-linkedin"></i>
-                                <span>LinkedIn Recommendation</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 5 - Maheen Neha -->
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "I had the pleasure of working with Sabbir bhai and have to say he is extremely dedicated and is great with his work. A talented individual always exploring new techniques and technology and can easily blend in with any team he works in. As a team member I would highly recommend him any day!"
-                        </p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="images/linkedinTestimonialsImages/maheen.jpeg" alt="Maheen Neha">
-                        </div>
-                        <div class="author-info">
-                            <h4>Maheen Neha</h4>
-                            <p>Sr. Product Manager, Optimizely • February 23, 2021</p>
-                            <div class="linkedin-badge">
-                                <i class="fab fa-linkedin"></i>
-                                <span>LinkedIn Recommendation</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 6 - Shahpar Islam -->
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-left"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "Ehsanul and I completed the BS and MS degrees from the same universities. He is a great team player and very cautious about the IT industry. Once he quit a lucrative job offer, I can remember just because it didn't have that much career prospect. He was right! Later, he worked for some of the biggest tech companies in our country by proving his talent and constantly upgrading himself. Apart from the technical aspect, Ehsanul is a great human being. He is connected with numerous volunteering organizations and spends a lot of time for the good of society. The best part is he cares about others selflessly. I also admire him for his athletic activities like running 5Ks or knocking a ton in a local cricket tournament. Suppose you come across his profile and thinking about getting connected? Then, just get hooked. He will help you regarding any business or social cause."
-                        </p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <img src="images/linkedinTestimonialsImages/shahpar.jpeg" alt="Shahpar Islam">
-                        </div>
-                        <div class="author-info">
-                            <h4>Shahpar Islam</h4>
-                            <p>Assistant Professor | AWS Authorized • December 20, 2020</p>
-                            <div class="linkedin-badge">
-                                <i class="fab fa-linkedin"></i>
-                                <span>LinkedIn Recommendation</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- LinkedIn CTA -->
-            <div class="linkedin-cta" data-aos="fade-up" data-aos-delay="700">
-                <h3>Want to add your recommendation?</h3>
-                <p>Connect with me on LinkedIn and share your experience working together</p>
-                <a href="https://www.linkedin.com/in/ehsanul-alam-sabbir/" target="_blank" class="btn btn-primary">
-                    <i class="fab fa-linkedin"></i>
-                    View LinkedIn Profile
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills" data-aos="fade-up">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Test Automation</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Selenium</span>
-                        <span class="skill-item">Playwright</span>
-                        <span class="skill-item">Cypress</span>
-                        <span class="skill-item">Appium</span>
-                        <span class="skill-item">REST Assured</span>
-                        <span class="skill-item">Postman Automation</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Testing Tools & Frameworks</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">JMeter</span>
-                        <span class="skill-item">Postman</span>
-                        <span class="skill-item">Burp Suite</span>
-                        <span class="skill-item">Locust</span>
-                        <span class="skill-item">K6</span>
-                        <span class="skill-item">JIRA</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Embedded & Firmware Testing</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">pytest</span>
-                        <span class="skill-item">Firmware Integration Testing</span>
-                        <span class="skill-item">Serial / USB CLI Testing</span>
-                        <span class="skill-item">Fault Injection</span>
-                        <span class="skill-item">IoT / LTE Devices</span>
-                        <span class="skill-item">Hardware CI (Jenkins)</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Programming & Database</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Java</span>
-                        <span class="skill-item">SQL</span>
-                        <span class="skill-item">JavaScript</span>
-                        <span class="skill-item">Python</span>
-                        <span class="skill-item">Database Testing</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Methodologies & CI/CD</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Agile</span>
-                        <span class="skill-item">Scrum</span>
-                        <span class="skill-item">Jenkins</span>
-                        <span class="skill-item">Github Actions</span>
-                        <span class="skill-item">Regression Testing</span>
-                        <span class="skill-item">Performance Testing</span>
-                        <span class="skill-item">User Acceptance Testing</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects" data-aos="fade-up">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-microchip" aria-hidden="true"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Cellular IoT Gateway - Firmware Testing</h3>
-                        <p>Integration test suite for firmware running on an LTE module in a smart-metering product. Every test runs on a real unit over a USB serial CLI, with no mocks, and Jenkins flashes and tests each build.</p>
-                        <div class="project-tech">
-                            <span>pytest</span>
-                            <span>Python</span>
-                            <span>Serial CLI</span>
-                            <span>Jenkins</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="/blog/testing-firmware-on-real-hardware/" class="project-link"><i class="fas fa-book-open"></i> Read the case study</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/klikit.webp" alt="Klikit Food Aggregator Platform" class="project-img">
-                    </div>
-                    <div class="project-content">
-                        <h3>Klikit - Food Aggregator Platform</h3>
-                        <p>Ensuring high quality for both web and mobile applications with comprehensive automation using Cypress and performance testing.</p>
-                        <div class="project-tech">
-                            <span>Cypress</span>
-                            <span>JMeter</span>
-                            <span>Postman</span>
-                            <span>Burp Suite</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://klikit.io/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Company</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/spenn.jpg" alt="Spenn App Fintech Solution" class="project-img">
-                    </div>
-                    <div class="project-content">
-                        <h3>Spenn App - Fintech Solution</h3>
-                        <p>Manual and API testing for fintech product with comprehensive performance testing using JMeter and K6, including team mentoring.</p>
-                        <div class="project-tech">
-                            <span>Postman</span>
-                            <span>JMeter</span>
-                            <span>K6</span>
-                            <span>REST Assured</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://www.spenn.com/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i>Company</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/bracBank.jpg" alt="mRemit System - BRAC Bank Banking Solution" class="project-img">
-                    </div>
-                    <div class="project-content">
-                        <h3>mRemit System - Banking Solution</h3>
-                        <p>Complete testing lifecycle for remittance system including functional, integration, regression, and performance testing with UAT coordination.</p>
-                        <div class="project-tech">
-                            <span>Postman</span>
-                            <span>JMeter</span>
-                            <span>SQL</span>
-                            <span>Banking APIs</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://www.bracbank.com/en" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Company</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/pathao.png" alt="Pathao Ride Sharing Platform Project" class="project-img">
-                    </div>
-                    <div class="project-content">
-                        <h3>Pathao - Ride Sharing Platform</h3>
-                        <p>Comprehensive testing for ride-sharing and delivery services including mobile app automation testing using Appium and API testing.</p>
-                        <div class="project-tech">
-                            <span>Appium</span>
-                            <span>JMeter</span>
-                            <span>Postman</span>
-                            <span>Burp Suite</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://pathao.com/bn/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Company</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/pihr.png" alt="PiHR Security Testing Project" class="project-img">
-                    </div>
-                    <div class="project-content">
-                        <h3>PiHR - Security Testing</h3>
-                        <p>Security testing using Burp Suite and performance testing using JMeter and Locust for HR management system.</p>
-                        <div class="project-tech">
-                            <span>Burp Suite</span>
-                            <span>JMeter</span>
-                            <span>Locust</span>
-                            <span>Security Testing</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://mypihr.com/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Company</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/ababil.png" alt="Core Banking Solution ABABIL" class="project-img">
-                    </div>
-                    <div class="project-content">
-                        <h3>Core Banking Solution (ABABIL)</h3>
-                        <p>Manual testing and test automation for Islamic banking software with comprehensive functional and regression testing.</p>
-                        <div class="project-tech">
-                            <span>Postman</span>
-                            <span>SQL</span>
-                            <span>Banking Systems</span>
-                            <span>Database Testing</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://mislbd.com/ababil/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Company</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/xsolla-logo.svg" alt="Xsolla" class="project-img">
-                    </div>
-                    <div class="project-content">
-                        <h3>Xsolla</h3>
-                        <p>Designed automation framework from scratch using Playwright, performed performance testing with Locust, and conducted manual and regression testing for partner network team. Led knowledge sharing sessions and mentored junior automation engineers.</p>
-                        <div class="project-tech">
-                            <span>Playwright</span>
-                            <span>Postman</span>
-                            <span>Locust</span>
-                            <span>Performance Testing</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://xsolla.com/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Company</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications" data-aos="fade-up">
-        <div class="container">
-            <h2 class="section-title">Certifications</h2>
-            <div class="certifications-content">
-                <p class="coming-soon">Professional certifications and achievements will be displayed here soon.</p>
-                <div class="cert-placeholder">
-                    <i class="fas fa-certificate"></i>
-                    <h3>Coming Soon</h3>
-                    <p>ISTQB, Agile Testing, and other professional certifications</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog/Articles Section -->
-    <section id="blog" class="blog" data-aos="fade-up">
-        <div class="container">
-            <h2 class="section-title">Blog & Articles</h2>
-            <div class="blog-content blog-home">
-                <p class="blog-home-intro">Write-ups from real projects: embedded firmware on hardware, test automation, APIs and performance.</p>
-                {%- assign series_groups = site.posts | where_exp: "p", "p.series" | group_by: "series" -%}
-                {%- for group in series_groups limit: 1 %}
-                {%- assign parts = group.items | sort: "part" -%}
-                {%- assign first = parts | first -%}
-                {%- assign series_info = site.data.series | where: "name", group.name | first -%}
-                <div class="series-feature-inner">
-                    <div class="series-feature-head">
-                        <p class="blog-eyebrow"><i class="fas fa-layer-group" aria-hidden="true"></i> Series &middot; {{ parts.size }} parts</p>
-                        <h3 class="series-home-title">{{ group.name }}</h3>
-                        {%- if series_info.description %}
-                        <p>{{ series_info.description }}</p>
-                        {%- endif %}
-                        <a class="btn btn-primary" href="{{ first.url | relative_url }}">Start with Part 1 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                    <ol class="series-feature-list">
-                        {%- for p in parts limit: 5 %}
-                        <li>
-                            <a href="{{ p.url | relative_url }}">
-                                <span class="series-num">{{ p.part | prepend: '0' | slice: -2, 2 }}</span>
-                                <span class="series-text">
-                                    <span class="series-title">{{ p.title }}</span>
-                                    <span class="series-desc">{{ p.description }}</span>
-                                </span>
-                            </a>
-                        </li>
-                        {%- endfor %}
-                    </ol>
-                </div>
-                {%- endfor %}
-                {%- assign standalone = site.posts | where_exp: "p", "p.series == nil" %}
-                {%- if standalone.size > 0 %}
-                <div class="post-grid">
-                    {%- for post in standalone limit: 3 %}
-                    {% include post-card.html post=post %}
-                    {%- endfor %}
-                </div>
-                {%- endif %}
-                <div class="blog-home-cta">
-                    <a href="/blog/" class="btn btn-secondary">Browse all {{ site.posts.size }} articles <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume" class="resume-section" data-aos="fade-up">
-        <div class="container">
-            <h2 class="section-title">Professional Resume</h2>
-            <div class="resume-content">
-                <div class="resume-preview">
-                    <div class="pdf-preview">
-                        <i class="fas fa-file-pdf"></i>
-                        <h3>QA Engineering Resume</h3>
-                        <p>Comprehensive overview of my 12+ years in Quality Assurance, Test Automation, and Software Testing across multiple industries and technologies.</p>
-                    </div>
+            <div class="resume-card" id="resume">
+                <span class="resume-icon" aria-hidden="true"><i class="fas fa-file-pdf"></i></span>
+                <div class="resume-text">
+                    <h3>Resume</h3>
+                    <p>PDF &middot; updated {{ site.resume_updated }}</p>
                 </div>
                 <div class="resume-actions">
-                    <a href="Ehsanul Alam Sabbir.pdf?v=20251226" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-eye"></i> View Online
-                    </a>
-                    <a href="Ehsanul Alam Sabbir.pdf?v=20251226" download class="btn btn-secondary">
-                        <i class="fas fa-download"></i> Download Resume
-                    </a>
+                    <a class="btn btn-sm btn-secondary" href="{{ site.resume_url }}" target="_blank" rel="noopener">View</a>
+                    <a class="btn btn-sm btn-primary" href="{{ site.resume_url }}" download="Ehsanul-Alam-Sabbir-Resume.pdf"><i class="fas fa-download" aria-hidden="true"></i> Download</a>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact" data-aos="fade-up">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>ehsanul.alam@vivasoftltd.com</p>
-                            <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 0.25rem;">easabbir@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Phone</h3>
-                            <p>+880 1670102216</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Location</h3>
-                            <p>Dhaka, Bangladesh</p>
-                        </div>
-                    </div>
+        <form class="contact-form" id="contact-form" data-reveal data-mailto="{{ site.contact_email }}"
+              action="mailto:{{ site.contact_email }}" method="post" enctype="text/plain">
+            <div class="form-row">
+                <div class="field">
+                    <label for="cf-name">Your name</label>
+                    <input id="cf-name" name="name" type="text" autocomplete="name" required aria-describedby="cf-name-error">
+                    <p class="field-error" id="cf-name-error"></p>
                 </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="subject" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 Ehsanul Alam Sabbir. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/ehsanul-alam-sabbir/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/easabbir" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.facebook.com/ehsanul.sabbir/" class="social-link" target="_blank"><i class="fab fa-facebook"></i></a>
+                <div class="field">
+                    <label for="cf-email">Your email</label>
+                    <input id="cf-email" name="email" type="email" autocomplete="email" required aria-describedby="cf-email-error">
+                    <p class="field-error" id="cf-email-error"></p>
                 </div>
             </div>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+            <div class="field">
+                <label for="cf-subject">Subject <span class="optional">(optional)</span></label>
+                <input id="cf-subject" name="subject" type="text">
+            </div>
+            <div class="field">
+                <label for="cf-message">Message</label>
+                <textarea id="cf-message" name="message" rows="6" required aria-describedby="cf-message-error"></textarea>
+                <p class="field-error" id="cf-message-error"></p>
+            </div>
+            <div class="form-footer">
+                <p class="form-note">Opens your email app with the message ready to send to {{ site.contact_email }}.</p>
+                <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Write email</button>
+            </div>
+            <p class="form-status" id="form-status" role="status"></p>
+        </form>
+    </div>
+</section>

@@ -19,6 +19,17 @@ social:
     - https://www.linkedin.com/in/ehsanul-alam-sabbir/
     - https://github.com/easabbir
 
+# Large preview card when a link is shared on LinkedIn, X, Slack, WhatsApp…
+twitter:
+  card: summary_large_image
+
+# Resume PDF. Bump `v` whenever the PDF changes so browsers fetch the new file.
+resume_url: "/Ehsanul%20Alam%20Sabbir.pdf?v=20251226"
+resume_updated: December 2025
+
+# Where the contact form sends messages (it opens the visitor's email app).
+contact_email: easabbir@gmail.com
+
 # Every post lives at /blog/<slug>/
 permalink: /blog/:title/
 
@@ -53,6 +64,15 @@ blog_categories:
     icon: fa-list-check
 
 defaults:
+  - scope:
+      path: ""
+    values:
+      image: /images/og-card.jpg
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
   - scope:
       path: ""
       type: posts

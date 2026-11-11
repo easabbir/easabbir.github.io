@@ -1,0 +1,34 @@
+{%- assign on_blog = false -%}
+{%- if page.url contains '/blog/' -%}{%- assign on_blog = true -%}{%- endif -%}
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="navbar" id="navbar">
+    <nav class="nav-container" aria-label="Main">
+        <a class="nav-logo" href="{{ '/' | relative_url }}">
+            {% include brand-mark.html %}
+            <span class="brand-name">Ehsanul Alam Sabbir</span>
+        </a>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a class="nav-link" href="{{ '/#about' | relative_url }}" data-section="about">About</a></li>
+            <li><a class="nav-link" href="{{ '/#experience' | relative_url }}" data-section="experience">Experience</a></li>
+            <li><a class="nav-link" href="{{ '/#projects' | relative_url }}" data-section="projects">Projects</a></li>
+            <li><a class="nav-link" href="{{ '/#skills' | relative_url }}" data-section="skills">Skills</a></li>
+            <li><a class="nav-link{% if on_blog %} is-active{% endif %}" href="{{ '/blog/' | relative_url }}" data-section="blog"{% if on_blog %} aria-current="page"{% endif %}>Blog</a></li>
+            <li><a class="nav-link" href="{{ '/#contact' | relative_url }}" data-section="contact">Contact</a></li>
+            <li class="nav-menu-extra">
+                <a class="btn btn-secondary nav-menu-resume" href="{{ site.resume_url }}" target="_blank" rel="noopener">
+                    <i class="fas fa-file-lines" aria-hidden="true"></i> Resume (PDF)
+                </a>
+            </li>
+        </ul>
+        <div class="nav-actions">
+            <a class="btn btn-sm btn-secondary nav-resume" href="{{ site.resume_url }}" target="_blank" rel="noopener">Resume</a>
+            <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+                <i class="fas fa-moon icon-moon" aria-hidden="true"></i>
+                <i class="fas fa-sun icon-sun" aria-hidden="true"></i>
+            </button>
+            <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+                <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+            </button>
+        </div>
+    </nav>
+</header>
