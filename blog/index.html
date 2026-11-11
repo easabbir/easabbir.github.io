@@ -1,0 +1,82 @@
+---
+layout: blog
+title: Blog
+description: >-
+  Articles by Ehsanul Alam Sabbir on embedded firmware QA, test automation,
+  performance and API testing, organised by topic and series.
+---
+{%- assign by_category = site.posts | group_by: "category" | sort: "name" -%}
+{%- assign series_groups = site.posts | where_exp: "p", "p.series" | group_by: "series" -%}
+
+<section class="blog-hero">
+    <div class="container">
+        <p class="blog-eyebrow">Blog &amp; Articles</p>
+        <h1>Notes from the test bench</h1>
+        <p class="blog-lede">Practical write-ups on testing real products: embedded firmware on hardware, automation frameworks, APIs and performance. Filter by topic or search for what you need.</p>
+
+        <div class="blog-tools">
+            <label class="blog-search">
+                <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+                <span class="sr-only">Search articles</span>
+                <input type="search" id="post-search" placeholder="Search articles, e.g. pytest, fixtures, serial" autocomplete="off">
+            </label>
+            <div class="category-filters" role="group" aria-label="Filter by topic">
+                <button type="button" class="chip active" data-filter="all" aria-pressed="true">All <span class="chip-count">{{ site.posts.size }}</span></button>
+                {%- for cat in by_category %}
+                <button type="button" class="chip" data-filter="{{ cat.name | slugify }}" aria-pressed="false">
+                    <i class="fas {% include category-icon.html category=cat.name %}" aria-hidden="true"></i>
+                    {{ cat.name }} <span class="chip-count">{{ cat.size }}</span>
+                </button>
+                {%- endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{%- for group in series_groups %}
+{%- assign parts = group.items | sort: "part" -%}
+{%- assign first = parts | first -%}
+{%- assign series_info = site.data.series | where: "name", group.name | first -%}
+<section class="series-feature" data-category="{{ first.category | slugify }}">
+    <div class="container">
+        <div class="series-feature-inner">
+            <div class="series-feature-head">
+                <p class="blog-eyebrow"><i class="fas fa-layer-group" aria-hidden="true"></i> Series &middot; {{ parts.size }} parts</p>
+                <h2>{{ group.name }}</h2>
+                {%- if series_info.description %}
+                <p>{{ series_info.description }}</p>
+                {%- endif %}
+                <a class="btn btn-primary" href="{{ first.url | relative_url }}">Start with Part 1 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+            <ol class="series-feature-list">
+                {%- for p in parts %}
+                <li>
+                    <a href="{{ p.url | relative_url }}">
+                        <span class="series-num">{{ p.part | prepend: '0' | slice: -2, 2 }}</span>
+                        <span class="series-text">
+                            <span class="series-title">{{ p.title }}</span>
+                            <span class="series-desc">{{ p.description }}</span>
+                        </span>
+                    </a>
+                </li>
+                {%- endfor %}
+            </ol>
+        </div>
+    </div>
+</section>
+{%- endfor %}
+
+<section class="blog-list">
+    <div class="container">
+        <div class="blog-list-head">
+            <h2>All articles</h2>
+            <p class="blog-result-count" id="result-count" aria-live="polite"></p>
+        </div>
+        <div class="post-grid" id="post-grid">
+            {%- for post in site.posts %}
+            {% include post-card.html post=post %}
+            {%- endfor %}
+        </div>
+        <p class="blog-empty" id="blog-empty" hidden>No articles match that search. Try a different word, or <button type="button" class="link-btn" id="clear-filters">clear the filters</button>.</p>
+    </div>
+</section>

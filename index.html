@@ -1,10 +1,16 @@
+---
+# Front matter lets Jekyll render the latest blog posts into this page.
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ehsanul Alam Sabbir - Staff SQA Engineer Portfolio</title>
+    <meta name="description" content="Ehsanul Alam Sabbir, Staff SQA Engineer: test automation, performance and API testing, and embedded firmware QA on real hardware. Portfolio and blog.">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/css/blog.css">
+    <link rel="alternate" type="application/rss+xml" title="Ehsanul Alam Sabbir - Blog" href="/blog/feed.xml">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -78,7 +84,7 @@
                 </h1>
                 <p class="hero-subtitle">Staff SQA Engineer & Quality Assurance Expert</p>
                 <p class="hero-description">
-                    12+ years of experience in software quality assurance, test automation, and ensuring high-quality web and mobile applications across fintech, food aggregator, and banking domains.
+                    12+ years of experience in software quality assurance, test automation, and ensuring high-quality web, mobile and embedded products across fintech, food aggregator, banking and IoT domains.
                 </p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
@@ -119,7 +125,7 @@
                     </p>
                     <p>
                         My expertise spans manual testing, automation testing using Cypress and Selenium, API testing with Postman, performance testing with JMeter, 
-                        and mobile app testing with Appium. I have a strong background in agile methodologies, mentoring junior team members, 
+                        and mobile app testing with Appium. More recently I have moved into embedded systems testing: integration-testing firmware on real IoT hardware with pytest over a serial CLI, wired into hardware CI. I have a strong background in agile methodologies, mentoring junior team members, 
                         and delivering comprehensive testing solutions that ensure product reliability and user satisfaction.
                     </p>
                 </div>
@@ -152,11 +158,12 @@
                         <div class="timeline-date">2022 - Present</div>
                         <h3>Staff SQA Engineer</h3>
                         <h4>Vivasoft Limited</h4>
-                        <p>Leading quality assurance initiatives for food aggregator platform Klikit. Designed comprehensive automation frameworks using Cypress, conducted performance testing with JMeter, and mentored junior team members in best practices.</p>
+                        <p>Leading quality assurance initiatives for food aggregator platform Klikit. Designed comprehensive automation frameworks using Cypress, conducted performance testing with JMeter, and mentored junior team members in best practices. Now also leading embedded QA: a pytest integration suite for a cellular IoT gateway's firmware, run on real hardware over USB serial and in Jenkins hardware CI.</p>
                         <div class="timeline-achievements">
                             <span class="achievement">Team Leadership</span>
                             <span class="achievement">Automation Framework</span>
                             <span class="achievement">Performance Testing</span>
+                            <span class="achievement">Embedded / IoT Testing</span>
                         </div>
                     </div>
                 </div>
@@ -422,6 +429,17 @@
                     </div>
                 </div>
                 <div class="skill-category">
+                    <h3>Embedded & Firmware Testing</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">pytest</span>
+                        <span class="skill-item">Firmware Integration Testing</span>
+                        <span class="skill-item">Serial / USB CLI Testing</span>
+                        <span class="skill-item">Fault Injection</span>
+                        <span class="skill-item">IoT / LTE Devices</span>
+                        <span class="skill-item">Hardware CI (Jenkins)</span>
+                    </div>
+                </div>
+                <div class="skill-category">
                     <h3>Programming & Database</h3>
                     <div class="skill-items">
                         <span class="skill-item">Java</span>
@@ -452,6 +470,24 @@
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-microchip" aria-hidden="true"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Cellular IoT Gateway - Firmware Testing</h3>
+                        <p>Integration test suite for firmware running on an LTE module in a smart-metering product. Every test runs on a real unit over a USB serial CLI, with no mocks, and Jenkins flashes and tests each build.</p>
+                        <div class="project-tech">
+                            <span>pytest</span>
+                            <span>Python</span>
+                            <span>Serial CLI</span>
+                            <span>Jenkins</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="/blog/testing-firmware-on-real-hardware/" class="project-link"><i class="fas fa-book-open"></i> Read the case study</a>
+                        </div>
+                    </div>
+                </div>
                 <div class="project-card">
                     <div class="project-image">
                         <img src="images/klikit.webp" alt="Klikit Food Aggregator Platform" class="project-img">
@@ -601,12 +637,47 @@
     <section id="blog" class="blog" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title">Blog & Articles</h2>
-            <div class="blog-content">
-                <p class="coming-soon">Technical articles and blog posts about software testing will be featured here.</p>
-                <div class="blog-placeholder">
-                    <i class="fas fa-blog"></i>
-                    <h3>Coming Soon</h3>
-                    <p>Insights on test automation, quality assurance best practices, and industry trends</p>
+            <div class="blog-content blog-home">
+                <p class="blog-home-intro">Write-ups from real projects: embedded firmware on hardware, test automation, APIs and performance.</p>
+                {%- assign series_groups = site.posts | where_exp: "p", "p.series" | group_by: "series" -%}
+                {%- for group in series_groups limit: 1 %}
+                {%- assign parts = group.items | sort: "part" -%}
+                {%- assign first = parts | first -%}
+                {%- assign series_info = site.data.series | where: "name", group.name | first -%}
+                <div class="series-feature-inner">
+                    <div class="series-feature-head">
+                        <p class="blog-eyebrow"><i class="fas fa-layer-group" aria-hidden="true"></i> Series &middot; {{ parts.size }} parts</p>
+                        <h3 class="series-home-title">{{ group.name }}</h3>
+                        {%- if series_info.description %}
+                        <p>{{ series_info.description }}</p>
+                        {%- endif %}
+                        <a class="btn btn-primary" href="{{ first.url | relative_url }}">Start with Part 1 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                    <ol class="series-feature-list">
+                        {%- for p in parts limit: 5 %}
+                        <li>
+                            <a href="{{ p.url | relative_url }}">
+                                <span class="series-num">{{ p.part | prepend: '0' | slice: -2, 2 }}</span>
+                                <span class="series-text">
+                                    <span class="series-title">{{ p.title }}</span>
+                                    <span class="series-desc">{{ p.description }}</span>
+                                </span>
+                            </a>
+                        </li>
+                        {%- endfor %}
+                    </ol>
+                </div>
+                {%- endfor %}
+                {%- assign standalone = site.posts | where_exp: "p", "p.series == nil" %}
+                {%- if standalone.size > 0 %}
+                <div class="post-grid">
+                    {%- for post in standalone limit: 3 %}
+                    {% include post-card.html post=post %}
+                    {%- endfor %}
+                </div>
+                {%- endif %}
+                <div class="blog-home-cta">
+                    <a href="/blog/" class="btn btn-secondary">Browse all {{ site.posts.size }} articles <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>

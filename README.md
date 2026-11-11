@@ -19,6 +19,7 @@ A modern, responsive portfolio website showcasing software quality assurance exp
 4. **Projects**: Featured testing projects and automation frameworks
 5. **Resume**: PDF resume viewer and download
 6. **Contact**: Contact information and message form
+7. **Blog** (`/blog/`): Markdown articles in `_posts/`, built by GitHub Pages (Jekyll), with topic filters, search, series navigation, RSS (`/blog/feed.xml`) and a sitemap. See [BLOGGING.md](BLOGGING.md) for how to add a post.
 
 ## Technologies Used
 

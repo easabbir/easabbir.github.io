@@ -1,0 +1,108 @@
+---
+layout: blog
+---
+{%- assign words = content | number_of_words -%}
+{%- assign minutes = words | divided_by: 200 | plus: 1 -%}
+{%- if page.series -%}
+  {%- assign series_posts = site.posts | where: "series", page.series | sort: "part" -%}
+  {%- for p in series_posts -%}
+    {%- if p.url == page.url -%}
+      {%- assign idx = forloop.index0 -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign prev_idx = idx | minus: 1 -%}
+  {%- assign next_idx = idx | plus: 1 -%}
+  {%- if idx > 0 -%}{%- assign series_prev = series_posts[prev_idx] -%}{%- endif -%}
+  {%- assign series_next = series_posts[next_idx] -%}
+{%- endif -%}
+<article class="post" itemscope itemtype="https://schema.org/BlogPosting">
+    <header class="post-header">
+        <div class="post-container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="{{ '/blog/' | relative_url }}">Blog</a>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                <a href="{{ '/blog/' | relative_url }}#{{ page.category | slugify }}">{{ page.category }}</a>
+            </nav>
+            {%- if page.series %}
+            <p class="post-kicker">{{ page.series }} &middot; Part {{ page.part }} of {{ series_posts.size }}</p>
+            {%- endif %}
+            <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
+            {%- if page.description %}
+            <p class="post-subtitle" itemprop="description">{{ page.description }}</p>
+            {%- endif %}
+            <div class="post-meta">
+                <span class="post-author" itemprop="author">
+                    <img src="{{ '/images/sabbir.jpg' | relative_url }}" alt="" width="36" height="36">
+                    Ehsanul Alam Sabbir
+                </span>
+                <span aria-hidden="true">&middot;</span>
+                <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-d, %Y" }}</time>
+                <span aria-hidden="true">&middot;</span>
+                <span>{{ minutes }} min read</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="post-container">
+        {%- if page.series %}
+        <details class="series-box">
+            <summary>
+                <span><i class="fas fa-layer-group" aria-hidden="true"></i> {{ page.series }}</span>
+                <span class="series-count">{{ series_posts.size }} parts</span>
+            </summary>
+            <ol class="series-list">
+                {%- for p in series_posts %}
+                <li{% if p.url == page.url %} class="current" aria-current="page"{% endif %}>
+                    <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+                </li>
+                {%- endfor %}
+            </ol>
+        </details>
+        {%- endif %}
+
+        <div class="post-body" itemprop="articleBody">
+            {{ content }}
+        </div>
+
+        {%- if page.tags.size > 0 %}
+        <ul class="post-tags" aria-label="Tags">
+            {%- for tag in page.tags %}
+            <li>#{{ tag }}</li>
+            {%- endfor %}
+        </ul>
+        {%- endif %}
+
+        <div class="post-share">
+            <span>Share:</span>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url | url_encode }}&amp;text={{ page.title | url_encode }}" target="_blank" rel="noopener" aria-label="Share on X"><i class="fab fa-twitter"></i></a>
+            <button type="button" class="copy-link" data-url="{{ page.url | absolute_url }}" aria-label="Copy link"><i class="fas fa-link"></i></button>
+        </div>
+
+        {%- if page.series %}
+        <nav class="post-nav" aria-label="Series navigation">
+            {%- if series_prev %}
+            <a class="post-nav-link prev" href="{{ series_prev.url | relative_url }}">
+                <span class="post-nav-label"><i class="fas fa-arrow-left" aria-hidden="true"></i> Part {{ series_prev.part }}</span>
+                <span class="post-nav-title">{{ series_prev.title }}</span>
+            </a>
+            {%- else %}<span></span>{%- endif %}
+            {%- if series_next %}
+            <a class="post-nav-link next" href="{{ series_next.url | relative_url }}">
+                <span class="post-nav-label">Part {{ series_next.part }} <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                <span class="post-nav-title">{{ series_next.title }}</span>
+            </a>
+            {%- endif %}
+        </nav>
+        {%- endif %}
+
+        <aside class="author-box">
+            <img src="{{ '/images/sabbir.jpg' | relative_url }}" alt="Ehsanul Alam Sabbir" width="64" height="64">
+            <div>
+                <p class="author-name">Ehsanul Alam Sabbir</p>
+                <p class="author-bio">Staff SQA Engineer with 12+ years in web, mobile, API and performance testing, now testing embedded firmware on real hardware.</p>
+                <a href="{{ '/blog/' | relative_url }}">More articles <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        </aside>
+    </div>
+</article>

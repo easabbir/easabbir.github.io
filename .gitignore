@@ -50,3 +50,11 @@ pids
 node_modules/
 dist/
 build/
+
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
+Gemfile.lock

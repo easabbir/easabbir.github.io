@@ -1,0 +1,70 @@
+# Site settings — used by GitHub Pages (Jekyll) to build the blog.
+title: Ehsanul Alam Sabbir
+tagline: Staff SQA Engineer
+description: >-
+  Staff SQA Engineer writing about test automation, performance testing,
+  API testing and embedded firmware QA on real hardware.
+url: https://easabbir.github.io
+baseurl: ""
+lang: en_US
+timezone: Asia/Dhaka
+
+author:
+  name: Ehsanul Alam Sabbir
+  url: https://www.linkedin.com/in/ehsanul-alam-sabbir/
+
+social:
+  name: Ehsanul Alam Sabbir
+  links:
+    - https://www.linkedin.com/in/ehsanul-alam-sabbir/
+    - https://github.com/easabbir
+
+# Every post lives at /blog/<slug>/
+permalink: /blog/:title/
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  hard_wrap: false
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: blog/feed.xml
+
+# Short names for the category filter on /blog/. A post's `category` must match
+# one of the `name` values below to get its icon; new categories still work
+# without an entry here, they just get the default icon.
+blog_categories:
+  - name: Embedded QA
+    icon: fa-microchip
+  - name: Test Automation
+    icon: fa-robot
+  - name: Performance Testing
+    icon: fa-gauge-high
+  - name: API Testing
+    icon: fa-plug
+  - name: QA Process
+    icon: fa-list-check
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - README.md
+  - BLOGGING.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .vscode
+  - .gitignore
+  - .jekyll-cache

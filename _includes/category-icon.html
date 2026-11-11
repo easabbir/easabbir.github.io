@@ -1,0 +1,2 @@
+{%- assign _cat = site.blog_categories | where: "name", include.category | first -%}
+{%- if _cat -%}{{ _cat.icon }}{%- else -%}fa-file-lines{%- endif -%}

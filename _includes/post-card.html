@@ -1,0 +1,21 @@
+{%- assign post = include.post -%}
+{%- assign words = post.content | number_of_words -%}
+{%- assign minutes = words | divided_by: 200 | plus: 1 -%}
+<article class="post-card" data-category="{{ post.category | slugify }}"
+         data-search="{{ post.title | downcase | escape }} {{ post.description | downcase | escape }} {{ post.tags | join: ' ' | downcase }} {{ post.category | downcase }}">
+    <a class="post-card-link" href="{{ post.url | relative_url }}">
+        <div class="post-card-meta">
+            <span class="post-badge"><i class="fas {% include category-icon.html category=post.category %}" aria-hidden="true"></i> {{ post.category }}</span>
+            {%- if post.series %}
+            <span class="post-part">Part {{ post.part }}</span>
+            {%- endif %}
+        </div>
+        <h3 class="post-card-title">{{ post.title }}</h3>
+        <p class="post-card-desc">{{ post.description }}</p>
+        <div class="post-card-foot">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+            <span aria-hidden="true">&middot;</span>
+            <span>{{ minutes }} min read</span>
+        </div>
+    </a>
+</article>

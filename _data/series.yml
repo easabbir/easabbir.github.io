@@ -1,0 +1,6 @@
+# One entry per article series. `name` must match the `series:` value in each post.
+- name: Embedded QA Series
+  description: >-
+    Field notes from building and running an integration test suite for a
+    cellular IoT gateway: pytest on real hardware, over a USB serial CLI, with
+    no mocks.
