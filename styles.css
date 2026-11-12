@@ -978,6 +978,17 @@ body:not(.home) .navbar {
     font-weight: 500;
 }
 
+.timeline-company a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--line-strong);
+}
+
+.timeline-company a:hover {
+    color: var(--accent);
+    text-decoration-color: currentColor;
+}
+
 .timeline-body > p:not(.timeline-company) {
     max-width: 64ch;
 }
